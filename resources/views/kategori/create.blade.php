@@ -8,12 +8,24 @@
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        <?php
+            $kategori = \App\Models\Kategori::latest()->first();
+            $kode = "KTG";
+            if($kategori == null){
+                $nomorUrut = "001";
+            }else{
+                $nomorUrut = substr($kategori->kode_kategori, 3, 3) + 1;
+                $nomorUrut = str_pad($nomorUrut, 3, "0", STR_PAD_LEFT);
+            }
+
+            $kodeKategori = $kode . $nomorUrut;
+        ?>
+
         <form method="post" action="{{ route('kategori.store') }}" class="mt-6 space-y-6">
             @csrf
             <div class="max-w-xl">
                 <x-input-label for="kode_kategori" value="KODE KATEGORI"/>
-                <x-text-input id="kode_kategori" type="text" name="kode_kategori" class="mt-1 block w-full"
-                value="{{ old('kode_kategori') }}" required />
+                <x-text-input id="kode_kategori" type="text" name="kode_kategori"  value="{{ $kodeKategori }}" class="mt-1 block w-full bg-gray-100" readonly/>
                 <x-input-error class="mt-2" :messages="$errors->get('kode_kategori')" />
             </div>
 

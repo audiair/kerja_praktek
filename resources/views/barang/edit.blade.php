@@ -13,8 +13,8 @@
             @method('PATCH')
             <div class="max-w-xl">
                 <x-input-label for="kode_barang" value="KODE BARANG"/>
-                <x-text-input id="kode_barang" type="text" name="kode_barang" class="mt-1 block w-full"
-                value="{{ old('kode_barang', $barangs->kode_barang) }}" required />
+                <x-text-input id="kode_barang" type="text" name="kode_barang" class="mt-1 block w-full bg-gray-100"
+                value="{{ old('$kodeBarang', $barangs->kode_barang) }}" readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('id_kategori')" />
             </div>
 
@@ -41,7 +41,7 @@
 
             <div class="max-w-xl">
                 <x-input-label for="stok" value="STOK" />
-                <x-text-input id="stok" type="text" name="stok" class="mt-1 block w-full"
+                <x-text-input id="stok" type="number" name="stok" class="mt-1 block w-full"
                 value="{{ old('stok', $barangs->stok) }}" required />
                 <x-input-error class="mt-2" :messages="$errors->get('stok')" />
             </div>
@@ -52,8 +52,7 @@
                 value="{{ old('satuan', $barangs->satuan) }}" required />
                 <x-input-error class="mt-2" :messages="$errors->get('satuan')" />
             </div>
-
-
+            
             <x-secondary-button tag="a" href="{{ route('barang') }}">Cancel</x-secondary-button>
             <x-primary-button name="save" value="true">Ubah</x-primary-button>
         </form>

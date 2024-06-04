@@ -8,12 +8,24 @@
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        <?php
+            $barang = \App\Models\Barang::latest()->first();
+            $kode = "BPS";
+            if($barang == null){
+                $nomorUrut = "0001";
+            }else{
+                $nomorUrut = substr($barang->kode_barang, 3,4) + 1;
+                $nomorUrut = str_pad($nomorUrut, 4, "0", STR_PAD_LEFT);
+            }
+
+            $kodeBarang = $kode . $nomorUrut;
+        ?>
         <form method="post" action="{{ route('barang.store') }}" class="mt-6 space-y-6">
             @csrf
             <div class="max-w-xl">
                 <x-input-label for="kode_barang" value="KODE BARANG"/>
-                <x-text-input id="kode_barang" type="text" name="kode_barang" class="mt-1 block w-full"
-                value="{{ old('kode_barang') }}" required />
+                <x-text-input id="kode_barang" type="text" name="kode_barang" class="mt-1 block w-full bg-gray-100"
+                value="{{ $kodeBarang }}" readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('kode_barang')" />
             </div>
 
@@ -40,7 +52,7 @@
 
             <div class="max-w-xl">
                 <x-input-label for="stok" value="STOK" />
-                <x-text-input id="stok" type="text" name="stok" class="mt-1 block w-full"
+                <x-text-input id="stok" type="number" name="stok" class="mt-1 block w-full"
                 value="{{ old('stok') }}" required />
                 <x-input-error class="mt-2" :messages="$errors->get('stok')" />
             </div>

@@ -16,18 +16,8 @@ class BarangSeeder extends Seeder
         DB::table('barangs')->insert(
             [
                 [
-                    'kode_barang'=> 'A01',
-                    'nama_barang'=>'Konsentrat Sapi Nutrifeed',
-                    'stok' => 100,
-                    'satuan' => 'Kilogram',
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                    'id_kategori'=> '2',
-                ],
-                [
-                    'kode_barang'=> 'A02',
                     'nama_barang'=>'Harnes',
-                    'stok' => 50,
+                    'stok' => '0',
                     'satuan' => 'Pcs',
                     'created_at' => now(),
                     'updated_at' => now(),

@@ -13,8 +13,8 @@
             @method('PATCH')
             <div class="max-w-xl">
                 <x-input-label for="kode_kategori" value="KODE KATEGORI"/>
-                <x-text-input id="kode_kategori" type="text" name="kode_kategori" class="mt-1 block w-full"
-                value="{{ old('kode_kategori', $kategoris->kode_kategori) }}" required />
+                <x-text-input id="kode_kategori" type="text" name="kode_kategori" class="mt-1 block w-full bg-gray-100"
+                value="{{ old('$kode_kategori', $kategoris->kode_kategori) }}" readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('kode_kategori')" />
             </div>
 

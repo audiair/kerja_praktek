@@ -54,6 +54,29 @@
         Transaksi
     </div>
 
+    <x-sidebar.link
+        title="Barang Masuk"
+        href="{{ route('barang_masuk') }}"
+        :isActive="request()->routeIs('barang_masuk') || request()->routeIs('barang_masuk.create') || request()->routeIs('barang_masuk.edit')"
+    >
+    
+    <x-slot name="icon">
+            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
+
+    
+    <x-sidebar.link
+        title="Barang Keluar"
+        href="{{ route('barang_keluar') }}"
+        :isActive="request()->routeIs('barang_keluar') || request()->routeIs('barang_keluar.create') || request()->routeIs('barang_keluar.edit')"
+    >
+    
+    <x-slot name="icon">
+            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
+
     <x-sidebar.dropdown
         title="Buttons"
         :active="Str::startsWith(request()->route()->uri(), 'buttons')"

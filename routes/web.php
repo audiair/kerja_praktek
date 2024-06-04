@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\KategoriBarangController;
+use App\Http\Controllers\BarangMasukController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -58,6 +60,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/barangs/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
     Route::match(['put', 'patch'],'/barangs/{id}', [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/barangs/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+
+    Route::get('/barang_masuks', [BarangMasukController::class, 'index'])->name('barang_masuk');
+    Route::get('/barang_masuks/create', [BarangMasukController::class, 'create'])->name('barang_masuk.create');
+    Route::post('/barang_masuks', [BarangMasukController::class, 'store'])->name('barang_masuk.store');
+    Route::get('/barang_masuks/{id}/edit', [BarangMasukController::class, 'edit'])->name('barang_masuk.edit');
+    Route::match(['put', 'patch'],'/barang_masuks/{id}', [BarangMasukController::class, 'update'])->name('barang_masuk.update');
+    Route::delete('/barang_masuks/{id}', [BarangMasukController::class, 'destroy'])->name('barang_masuk.destroy');
+
+    Route::get('/barang_keluars', [BarangKeluarController::class, 'index'])->name('barang_keluar');
+    Route::get('/barang_keluars/create', [BarangKeluarController::class, 'create'])->name('barang_keluar.create');
+    Route::post('/barang_keluars', [BarangKeluarController::class, 'store'])->name('barang_keluar.store');
+    Route::get('/barang_keluars/{id}/edit', [BarangKeluarController::class, 'edit'])->name('barang_keluar.edit');
+    Route::match(['put', 'patch'],'/barang_keluars/{id}', [BarangKeluarController::class, 'update'])->name('barang_keluar.update');
+    Route::delete('/barang_keluars/{id}', [BarangKeluarController::class, 'destroy'])->name('barang_keluar.destroy');
 });
 
 require __DIR__ . '/auth.php';
