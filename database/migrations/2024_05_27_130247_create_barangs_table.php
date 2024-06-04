@@ -16,7 +16,7 @@ return new class extends Migration
             $table->char('kode_barang',20)->unique();
             $table->string('nama_barang');
             $table->integer('stok');
-            $table->string('satuan');
+            $table->enum('satuan', ['Pcs', 'Kilogram', 'Pack', 'Gram']);
             $table->timestamps();
 
             $table->foreignId('id_kategori')

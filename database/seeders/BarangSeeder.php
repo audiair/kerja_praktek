@@ -17,11 +17,10 @@ class BarangSeeder extends Seeder
             [
                 [
                     'nama_barang'=>'Harnes',
-                    'stok' => '0',
                     'satuan' => 'Pcs',
                     'created_at' => now(),
                     'updated_at' => now(),
-                    'id_kategori'=> '4',
+                    'id_kategori'=> '2',
                 ],
             ]
         );

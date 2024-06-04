@@ -52,16 +52,20 @@
 
             <div class="max-w-xl">
                 <x-input-label for="stok" value="STOK" />
-                <x-text-input id="stok" type="number" name="stok" class="mt-1 block w-full"
-                value="{{ old('stok') }}" required />
+                <x-text-input id="stok" type="number" name="stok" class="mt-1 block w-full bg-gray-100"
+                value="{{ 0 }}" readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('stok')" />
             </div>
                         
             <div class="max-w-xl">
-                <x-input-label for="satuan" value="SATUAN" />
-                <x-text-input id="satuan" type="text" name="satuan" class="mt-1 block w-full"
-                value="{{ old('satuan') }}" required />
-                <x-input-error class="mt-2" :messages="$errors->get('satuan')" />
+                <x-input-label for="satuan" value="SATUAN"/>
+                <x-select-input id="satuan" name="satuan" class="mt-1 block w-full" required>
+                    <option selected>Open this select menu</option>
+                    <option value="Pcs">Pcs</option>
+                    <option value="Kilogram">Kilogram</option>
+                    <option value="Pack">Pack</option>
+                    <option value="Gram">Gram</option>
+                </x-select-input>
             </div>
 
             <x-secondary-button tag="a" href="{{ route('barang') }}">Cancel</x-secondary-button>
