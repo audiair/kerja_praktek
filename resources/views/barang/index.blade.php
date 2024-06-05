@@ -21,6 +21,7 @@
                     <th>KATEGORI BARANG</th>
                     <th>STOK</th>
                     <th>SATUAN</th>
+                    <th>HARGA SATUAN</th>
                     <th>AKSI</th>
                 </tr>
             </x-slot>
@@ -33,6 +34,7 @@
                 <td>{{ $barang->kategori->kode_kategori }}-{{ $barang->kategori->kategori_barang }}
                 <td>{{ $barang->stok }}</td> 
                 <td>{{ $barang->satuan }}</td> 
+                <td>{{ $barang->harga_satuan }}</td> 
                 <td>
                     <x-primary-button tag="a" href="{{route('barang.edit', $barang->id)}}">
                         EDIT

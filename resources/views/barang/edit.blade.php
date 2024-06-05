@@ -52,6 +52,12 @@
                 value="{{ old('satuan', $barangs->satuan) }}" required />
                 <x-input-error class="mt-2" :messages="$errors->get('satuan')" />
             </div>
+
+            <div class="max-w-xl">
+                <x-input-label for="harga_satuan" value="HARGA SATUAN" />
+                    <x-text-input id="harga_satuan" type="number" name="harga_satuan" class="mt-1 block w-full bg-gray-100" value="{{ old('harga_satuan', $barangs->harga_satuan) }}" required/>
+                <x-input-error class="mt-2" :messages="$errors->get('harga_satuan')" />
+            </div>
             
             <x-secondary-button tag="a" href="{{ route('barang') }}">Cancel</x-secondary-button>
             <x-primary-button name="save" value="true">Ubah</x-primary-button>

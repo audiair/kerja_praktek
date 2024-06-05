@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_barang');
             $table->integer('stok');
             $table->enum('satuan', ['Pcs', 'Kilogram', 'Pack', 'Gram']);
+            $table->double('harga_satuan');
             $table->timestamps();
 
             $table->foreignId('id_kategori')

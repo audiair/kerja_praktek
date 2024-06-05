@@ -25,6 +25,7 @@ class BarangController extends Controller
             'id_kategori' => 'required',
             'stok' => 'required',
             'satuan' => 'required|max:10',
+            'harga_satuan' => 'required',
         ]);
 
         Barang::create($validated);
@@ -52,6 +53,7 @@ class BarangController extends Controller
             'id_kategori' => 'required',
             'stok' => 'required',
             'satuan' => 'required|max:10',
+            'harga_satuan' => 'required',
         ]);
         
         Barang::where('id', $id)->update($validated);
