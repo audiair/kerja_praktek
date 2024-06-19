@@ -16,25 +16,25 @@ class KategoriSeeder extends Seeder
         DB::table('kategoris')->insert(
             [
                 [
-                    'kode_kategori' => 'PH-01',
+                    'kode_kategori' => 'KTG01',
                     'kategori_barang'=>'Pakan Hewan',
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
                 [
-                    'kode_kategori' => 'AH-01',
+                    'kode_kategori' => 'KTG02',
                     'kategori_barang'=>'Aksesoris Hewan',
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
                 [
-                    'kode_kategori' => 'PH-02',
+                    'kode_kategori' => 'KTG03',
                     'kategori_barang'=>'Perlengkapan Hewan',
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
                 [
-                    'kode_kategori' => 'MH-01',
+                    'kode_kategori' => 'KTG04',
                     'kategori_barang' => 'Mainan Hewan',
                     'created_at' => now(),
                     'updated_at' => now(),

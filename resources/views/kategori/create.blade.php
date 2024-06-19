@@ -12,10 +12,10 @@
             $kategori = \App\Models\Kategori::latest()->first();
             $kode = "KTG";
             if($kategori == null){
-                $nomorUrut = "001";
+                $nomorUrut = "01";
             }else{
-                $nomorUrut = substr($kategori->kode_kategori, 3, 3) + 1;
-                $nomorUrut = str_pad($nomorUrut, 3, "0", STR_PAD_LEFT);
+                $nomorUrut = substr($kategori->kode_kategori, 3, 2) + 1;
+                $nomorUrut = str_pad($nomorUrut, 2, "0", STR_PAD_LEFT);
             }
 
             $kodeKategori = $kode . $nomorUrut;

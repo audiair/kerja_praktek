@@ -16,7 +16,7 @@ class BarangSeeder extends Seeder
         DB::table('barangs')->insert(
             [
                 [
-                    'kode_barang' => 'A-01',
+                    'kode_barang' => 'BPS001',
                     'nama_barang'=>'Harnes',
                     'stok' => '0',
                     'satuan' => 'Pcs',

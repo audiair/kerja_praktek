@@ -12,10 +12,10 @@
             $barang = \App\Models\Barang::latest()->first();
             $kode = "BPS";
             if($barang == null){
-                $nomorUrut = "0001";
+                $nomorUrut = "001";
             }else{
-                $nomorUrut = substr($barang->kode_barang, 3,4) + 1;
-                $nomorUrut = str_pad($nomorUrut, 4, "0", STR_PAD_LEFT);
+                $nomorUrut = substr($barang->kode_barang, 3,3) + 1;
+                $nomorUrut = str_pad($nomorUrut, 3, "0", STR_PAD_LEFT);
             }
 
             $kodeBarang = $kode . $nomorUrut;
@@ -25,7 +25,7 @@
             <div class="max-w-xl">
                 <x-input-label for="kode_barang" value="KODE BARANG"/>
                 <x-text-input id="kode_barang" type="text" name="kode_barang" class="mt-1 block w-full bg-gray-100"
-                value="{{ $kodeBarang }}" readonly />
+                value="{{ $kodeBarang }}" readonly required />
                 <x-input-error class="mt-2" :messages="$errors->get('kode_barang')" />
             </div>
 
@@ -70,7 +70,7 @@
 
             <div class="max-w-xl">
                 <x-input-label for="harga_satuan" value="HARGA SATUAN" />
-                    <x-text-input id="harga_satuan" type="number" name="harga_satuan" class="mt-1 block w-full bg-gray-100" value="{{ old('nama_barang') }}" required/>
+                    <x-text-input id="harga_satuan" type="number" name="harga_satuan" class="mt-1 block w-full" value="{{ old('nama_barang') }}" required/>
                 <x-input-error class="mt-2" :messages="$errors->get('harga_satuan')" />
             </div>
 
