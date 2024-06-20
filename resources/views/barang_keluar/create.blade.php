@@ -45,8 +45,8 @@
             </div>
 
             <div class="max-w-xl">
-                <x-input-label for="" value="KETERANGAN"/>
-                <x-select-input id="" name="keterangan" class="mt-1 block w-full" required>
+                <x-input-label for="keterangan" value="KETERANGAN"/>
+                <x-select-input id="keterangan" name="keterangan" class="mt-1 block w-full" required>
                     <option selected>Open this select menu</option>
                     <option value="Terjual">Terjual</option>
                     <option value="Terpakai">Terpakai</option>

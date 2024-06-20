@@ -49,11 +49,10 @@
             <div class="max-w-xl">
                 <x-input-label for="" value="KETERANGAN"/>
                 <x-select-input id="keterangan" name="keterangan" class="mt-1 block w-full" required>
-                    <option selected>Open this select menu</option>
+                    <option value="{{ old('keterangan', $barang_keluars->keterangan) }}" selected> {{ $barang_keluars->keterangan }}</option>
                     <option value="Terjual">Terjual</option>
                     <option value="Terpakai">Terpakai</option>
-                    <option value="Kadaluarsa">Kadaluarsa</option>
-                    <option value="Rusak">Rusak</option>
+                    <option value="Kadaluarsa">Kadaluarsa</option>  
                 </x-select-input>
             </div>
 
