@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __('Barang Masuk') }}
+                {{ __('Tambah Barang Masuk') }}
             </h2>
         </div>
     </x-slot>
@@ -47,14 +47,14 @@
 
             <div class="max-w-xl">
                 <x-input-label for="" value="STOK" />
-                <x-text-input id="" type="number" name="" class="mt-1 block w-full bg-gray-100"
+                <x-text-input id="" type="number" name="" class="mt-1 block w-full bg-gray-200"
                 readonly/>
                 <x-input-error class="mt-2" :messages="$errors->get('')" />
             </div>
 
             <div class="max-w-xl">
                 <x-input-label for="" value="TOTAL STOK" />
-                <x-text-input id="" type="number" name="" class="mt-1 block w-full bg-gray-100"
+                <x-text-input id="" type="number" name="" class="mt-1 block w-full bg-gray-200"
                 readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('')" />
             </div>
