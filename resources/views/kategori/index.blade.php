@@ -15,7 +15,7 @@
             <x-table>
                 <x-slot name="header">
                     <tr>
-                        <th>#</th>
+                        <th>NO</th>
                         <th>KODE KATEGORI</th>
                         <th>KATEGORI BARANG</th>
                         <th>AKSI</th>

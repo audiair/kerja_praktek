@@ -15,7 +15,7 @@
         <x-table>
             <x-slot name="header">
                 <tr>
-                    <th>#</th>
+                    <th>NO</th>
                     <th>KODE BARANG</th>
                     <th>NAMA BARANG</th>
                     <th>KATEGORI BARANG</th>
@@ -34,7 +34,7 @@
                 <td>{{ $barang->kategori->kode_kategori }}-{{ $barang->kategori->kategori_barang }}
                 <td>{{ $barang->stok }}</td> 
                 <td>{{ $barang->satuan }}</td> 
-                <td>{{ $barang->harga_satuan }}</td> 
+                <td>Rp. {{ number_format($barang->harga_satuan) }}</td> 
                 <td>
                     <x-primary-button tag="a" href="{{route('barang.edit', $barang->id)}}">
                         EDIT

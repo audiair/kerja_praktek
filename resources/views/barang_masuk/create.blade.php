@@ -47,8 +47,7 @@
 
             <div class="max-w-xl">
                 <x-input-label for="" value="STOK" />
-                <x-text-input id="" type="number" name="" class="mt-1 block w-full bg-gray-200"
-                readonly/>
+                <x-text-input id="" type="number" name="" class="mt-1 block w-full bg-gray-200" readonly/>
                 <x-input-error class="mt-2" :messages="$errors->get('')" />
             </div>
 

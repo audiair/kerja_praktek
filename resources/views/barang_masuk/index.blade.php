@@ -15,7 +15,7 @@
             <x-table>
                 <x-slot name="header">
                     <tr>
-                        <th>#</th>
+                        <th>NO</th>
                         <th>TANGGAL MASUK</th>
                         <th>BARANG</th>
                         <th>JUMLAH MASUK</th>
@@ -30,7 +30,7 @@
                     <td>{{ $barang_masuk->tgl_masuk }}</td>
                     <td>{{ $barang_masuk->barang->kode_barang }}-{{ $barang_masuk->barang->nama_barang }}
                     <td>{{ $barang_masuk->jml_masuk }}</td> 
-                    <td>{{ $barang_masuk->total_harga }}</td> 
+                    <td>Rp. {{number_format ($barang_masuk->total_harga) }}</td> 
                     <td>
                         <x-primary-button tag="a" href="{{route('barang_masuk.edit', $barang_masuk->id)}}">
                             EDIT
