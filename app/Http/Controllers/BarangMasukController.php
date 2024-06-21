@@ -52,6 +52,7 @@ class BarangMasukController extends Controller
             'jml_masuk' => 'required',
             'total_harga' => 'required',
         ]);
+        
         $id_barang = $request->id_barang;
         $total_stok = $request->total_stok;
         BarangMasuk::where('id', $id)->update($validated);

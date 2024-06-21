@@ -14,7 +14,7 @@ class BarangKeluarController extends Controller
     }
 
     public function create(){
-        $data['barangs'] = Barang::pluck('nama_barang','id');
+        $data['barangs'] = Barang::select('id', 'nama_barang', 'stok', 'harga_satuan')->get();
         return view('barang_keluar.create', $data);
     }
 
@@ -26,8 +26,12 @@ class BarangKeluarController extends Controller
             'total_harga' => 'required',
             'keterangan' => 'required',
         ]);
+        
+        $total_stok = $request->total_stok;
+        $id_barang = $request->id_barang;
 
         BarangKeluar::create($validated);
+        Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
 
         if($request->save == true) {
             return redirect()->route('barang_keluar');
@@ -38,7 +42,7 @@ class BarangKeluarController extends Controller
 
     public function edit(string $id){
         $data['barang_keluars'] = BarangKeluar::find($id);
-        $data['barangs'] = Barang::pluck('nama_barang', 'id');
+        $data['barangs'] = Barang::select('id', 'nama_barang', 'stok', 'harga_satuan')->get();
         
         return view('barang_keluar.edit', $data);
     }
@@ -53,8 +57,11 @@ class BarangKeluarController extends Controller
             'total_harga' => 'required',
             'keterangan' => 'required',
         ]);
-        
+             
+        $id_barang = $request->id_barang;
+        $total_stok = $request->total_stok;
         BarangKeluar::where('id', $id)->update($validated);
+        Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
 
         return redirect()->route('barang_keluar');
     }
