@@ -25,7 +25,7 @@
             <div class="max-w-xl">
                 <x-input-label for="kode_barang" value="KODE BARANG"/>
                 <x-text-input id="kode_barang" type="text" name="kode_barang" class="mt-1 block w-full bg-gray-100"
-                value="{{ $kode_barang }}" readonly required />
+                value="{{ $kodeBarang }}" readonly required />
                 <x-input-error class="mt-2" :messages="$errors->get('kode_barang')" />
             </div>
 
