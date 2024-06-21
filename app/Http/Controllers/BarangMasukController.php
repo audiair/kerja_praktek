@@ -14,8 +14,8 @@ class BarangMasukController extends Controller
     }
 
     public function create(){
-        $data['barangs'] = Barang::pluck('nama_barang','id');
-        return view('barang_masuk.create',$data);
+        $data['barangs'] = Barang::select('id', 'nama_barang', 'stok')->get();
+        return view('barang_masuk.create', $data);
     }
 
     public function store(Request $request){
@@ -37,7 +37,7 @@ class BarangMasukController extends Controller
 
     public function edit(string $id){
         $data['barang_masuks'] = BarangMasuk::find($id);
-        $data['barangs'] = Barang::pluck('nama_barang', 'id');
+        $data['barangs'] = Barang::select('id', 'nama_barang', 'stok')->get();
         
         return view('barang_masuk.edit', $data);
     }
