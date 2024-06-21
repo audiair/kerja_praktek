@@ -46,19 +46,6 @@
                 <x-input-error class="mt-2" :messages="$errors->get('total_harga')" />
             </div>
 
-            <div class="max-w-xl">
-                <x-input-label for="stok" value="STOK" />
-                <x-text-input id="stok" type="number" name="stok" class="mt-1 block w-full bg-gray-200" readonly/>
-                <x-input-error class="mt-2" :messages="$errors->get('stok')" />
-            </div>
-
-            <div class="max-w-xl">
-                <x-input-label for="total_stok" value="TOTAL STOK" />
-                <x-text-input id="total_stok" type="number" name="total_stok" class="mt-1 block w-full bg-gray-200"
-                readonly />
-                <x-input-error class="mt-2" :messages="$errors->get('total_stok')" />
-            </div>
-
             <x-secondary-button tag="a" href="{{ route('barang_masuk') }}">Cancel</x-secondary-button>
             <x-primary-button name="save" value="true">Ubah</x-primary-button>
         </form>
