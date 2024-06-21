@@ -56,17 +56,17 @@
             </div>
 
             <div class="max-w-xl">
-                <x-input-label for="" value="STOK" />
-                <x-text-input id="" type="number" name="" class="mt-1 block w-full bg-gray-200"
+                <x-input-label for="stok" value="STOK" />
+                <x-text-input id="stok" type="number" name="stok" class="mt-1 block w-full bg-gray-200"
                 readonly />
-                <x-input-error class="mt-2" :messages="$errors->get('')" />
+                <x-input-error class="mt-2" :messages="$errors->get('stok')" />
             </div>
 
             <div class="max-w-xl">
-                <x-input-label for="" value="TOTAL STOK" />
-                <x-text-input id="" type="number" name="" class="mt-1 block w-full bg-gray-200"
+                <x-input-label for="total_stok" value="TOTAL STOK" />
+                <x-text-input id="total_stok" type="number" name="total_stok" class="mt-1 block w-full bg-gray-200"
                 readonly />
-                <x-input-error class="mt-2" :messages="$errors->get('')" />
+                <x-input-error class="mt-2" :messages="$errors->get('total_stok')" />
             </div>
             
             <x-secondary-button tag="a" href="{{ route('barang_keluar') }}">Cancel</x-secondary-button>
