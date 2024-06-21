@@ -26,7 +26,10 @@ class BarangMasukController extends Controller
             'total_harga' => 'required',
         ]);
 
+        $total_stok = $request->total_stok;
+        $id_barang = $request->id_barang;
         BarangMasuk::create($validated);
+        Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
 
         if($request->save == true) {
             return redirect()->route('barang_masuk');
@@ -43,16 +46,16 @@ class BarangMasukController extends Controller
     }
 
     public function update(Request $request, string $id){
-        $barang_masuk = BarangMasuk::find($id);
-
         $validated = $request->validate([
             'tgl_masuk' => 'required',
             'id_barang' => 'required',
             'jml_masuk' => 'required',
             'total_harga' => 'required',
         ]);
-        
+        $id_barang = $request->id_barang;
+        $total_stok = $request->total_stok;
         BarangMasuk::where('id', $id)->update($validated);
+        Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
 
         return redirect()->route('barang_masuk');
     }

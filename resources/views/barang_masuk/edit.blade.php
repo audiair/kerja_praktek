@@ -36,6 +36,8 @@
                 <x-input-label for="jml_masuk" value="JUMLAH MASUK" />
                 <x-text-input id="jml_masuk" type="number" name="jml_masuk" class="mt-1 block w-full"
                 value="{{ old('jml_masuk', $barang_masuks->jml_masuk) }}" required />
+                <x-text-input id="jml_masuk_lama" type="hidden" name="jml_masuk_lama" class="mt-1 block w-full"
+                value="{{ $barang_masuks->jml_masuk }}" required />
                 <x-input-error class="mt-2" :messages="$errors->get('jml_masuk')" />
             </div>
 
@@ -69,16 +71,21 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const selectBarang = document.getElementById('id_barang');
     const inputJmlMasuk = document.getElementById('jml_masuk');
+    const inputJmlMasuk_lama = document.getElementById('jml_masuk_lama');
     const inputStok = document.getElementById('stok');
     const inputTotalStok = document.getElementById('total_stok');
 
     function updateStok() {
         const selectedOption = selectBarang.options[selectBarang.selectedIndex];
         const stok = selectedOption.getAttribute('data-stok');
-        const jmlMasuk = inputJmlMasuk.value;
+        const jmlMasuk_lama = parseInt(inputJmlMasuk_lama.value) || 0;
+        const jmlMasuk = parseInt(inputJmlMasuk.value) || 0;
 
-        inputStok.value = stok ? parseInt(stok) : 0;
-        inputTotalStok.value = (stok && jmlMasuk) ? (parseInt(stok) + parseInt(jmlMasuk)) : inputStok.value;
+        let updatedStok = stok ? parseInt(stok) : 0;
+
+        updatedStok -= jmlMasuk_lama;
+        inputStok.value = updatedStok;
+        inputTotalStok.value = updatedStok + jmlMasuk;  
     }
 
     selectBarang.addEventListener('change', updateStok);
@@ -86,13 +93,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     updateStok();
 
-    const selectedOption = selectBarang.options[selectBarang.selectedIndex];
-    if (selectedOption) {
-        const stok = selectedOption.getAttribute('data-stok');
-        const jmlMasuk = inputJmlMasuk.value;
-
-        inputStok.value = stok ? parseInt(stok) : 0;
-        inputTotalStok.value = (stok && jmlMasuk) ? (parseInt(stok) + parseInt(jmlMasuk)) : inputStok.value;
-    }
 });
 </script>
