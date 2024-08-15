@@ -4,6 +4,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\BarangMasukController;
+use App\Http\Controllers\LaporanMasukController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -74,6 +75,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/barang_keluars/{id}/edit', [BarangKeluarController::class, 'edit'])->name('barang_keluar.edit');
     Route::match(['put', 'patch'],'/barang_keluars/{id}', [BarangKeluarController::class, 'update'])->name('barang_keluar.update');
     Route::delete('/barang_keluars/{id}', [BarangKeluarController::class, 'destroy'])->name('barang_keluar.destroy');
+
+    Route::get('/laporan_masuks', [LaporanMasukController::class, 'index'])->name('laporan_masuk');
+    Route::get('/filter', [LaporanMasukController::class, 'filter'])->name('filter');
+    Route::get('/laporan_masuks/print', [LaporanMasukController::class, 'print'])->name('laporan_masuk.print');
 });
 
 require __DIR__ . '/auth.php';

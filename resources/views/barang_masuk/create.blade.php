@@ -39,11 +39,11 @@
             </div>
 
             <div class="max-w-xl">
-                    <x-input-label for="total_harga" value="TOTAL HARGA" />
-                    <x-text-input id="total_harga" type="number" name="total_harga" class="mt-1 block w-full"
-                    value="{{ old('total_harga') }}" required />
-                    <x-input-error class="mt-2" :messages="$errors->get('total_harga')" />
-                </div>
+                <x-input-label for="total_harga" value="TOTAL HARGA" />
+                <x-text-input id="total_harga" type="number" name="total_harga" class="mt-1 block w-full"
+                value="{{ old('total_harga') }}" required />
+                <x-input-error class="mt-2" :messages="$errors->get('total_harga')" />
+            </div>
 
             <div class="max-w-xl">
                 <x-input-label for="stok" value="STOK" />

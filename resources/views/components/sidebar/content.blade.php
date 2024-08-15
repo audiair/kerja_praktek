@@ -77,7 +77,26 @@
         </x-slot>
     </x-sidebar.link>
 
-    <x-sidebar.dropdown
+    <div
+        x-transition
+        x-show="isSidebarOpen || isSidebarHovered"
+        class="text-sm text-gray-500"
+    >
+        Laporan
+    </div>
+
+    <x-sidebar.link
+        title="Laporan Barang Masuk"
+        href="{{ route('laporan_masuk') }}"
+        :isActive="request()->routeIs('laporan_masuk')"
+    >
+    
+    <x-slot name="icon">
+            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
+
+    <!-- <x-sidebar.dropdown
         title="Buttons"
         :active="Str::startsWith(request()->route()->uri(), 'buttons')"
     >
@@ -100,6 +119,6 @@
             href="{{ route('buttons.text-icon') }}"
             :active="request()->routeIs('buttons.text-icon')"
         />
-    </x-sidebar.dropdown>
+    </x-sidebar.dropdown> -->
 
 </x-perfect-scrollbar>

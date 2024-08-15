@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __('Barang Masuk') }}
+                {{ __('Data Barang Masuk') }}
             </h2>
         </div>
     </x-slot>
@@ -11,6 +11,7 @@
         <x-primary-button tag="a" href="{{route('barang_masuk.create')}}">
             Tambah Barang Masuk
         </x-primary-button>
+        
         <br/><br/>
             <x-table>
                 <x-slot name="header">
