@@ -77,7 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/barang_keluars/{id}', [BarangKeluarController::class, 'destroy'])->name('barang_keluar.destroy');
 
     Route::get('/laporan_masuks', [LaporanMasukController::class, 'index'])->name('laporan_masuk');
-    Route::get('/filter', [LaporanMasukController::class, 'filter'])->name('filter');
+    Route::get('/laporan_masuks/filter', [LaporanMasukController::class, 'filter'])->name('laporan_masuk.filter');
     Route::get('/laporan_masuks/print', [LaporanMasukController::class, 'print'])->name('laporan_masuk.print');
 });
 

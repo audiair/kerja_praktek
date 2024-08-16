@@ -6,13 +6,13 @@
             </h2>
         </div>
     </x-slot>
-
+    
     <form method="GET" action="/filter">
         <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
             <h2 class="text-xl font-semibold leading-tight mb-3">
                 Filter Data Barang Masuk
             </h2>
-            
+                
             <div class="inline-flex">
                 <div class="max-w-xl mr-6">
                     <x-input-label for="tgl_awal" value="Tanggal Awal" />
@@ -27,7 +27,12 @@
                 </div>
             </div>  
             <br><br>   
-            <x-primary-button  href="{{route('/filter')}}" tag="a">
+            <!-- <x-primary-button  tag="a" onclick="this.href='/filter/'+document.getElementById('tgl_awal').value + 
+            '/' + document.getElementById('tgl_akhir').value " target="_blank">
+                Tampilkan
+            </x-primary-button> -->
+
+            <x-primary-button tag="a" href="{{route('laporan_masuk.filter')}}">
                 Tampilkan
             </x-primary-button>
 
@@ -39,8 +44,9 @@
                 Export Excel
             </x-export-button>
         </div>
-        </br>
     </form>
+    
+    </br>
     
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
             <x-table>

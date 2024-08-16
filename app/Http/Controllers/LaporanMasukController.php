@@ -21,10 +21,7 @@ class LaporanMasukController extends Controller
         $tgl_awal = $request->tgl_awal;
         $tgl_akhir = $request->tgl_akhir;
 
-        $barang_masuk = BarangMasuk::whereDate('tgl_masuk', '>=', $tgl_awal)
-                                    ->whereDate('tgl_masuk', '<=', $tgl_awal)
-                                    ->get();
-
-        return view('laporan_masuk.index', compact('barang_masuk'));
+        $barang_masuks = BarangMasuk::whereBetween('tgl_masuk',[$tgl_awal, $tgl_akhir])->get();
+        return view('laporan_masuk.index', compact('barang_masuks'));
     }
 }
