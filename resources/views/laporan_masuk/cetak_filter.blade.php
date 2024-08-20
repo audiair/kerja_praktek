@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1 class="text-center">Data Barang Masuk</h1>
-    <p class="text-center">Laporan Data Barang Masuk</p>
+    <p class="text-center">Laporan Data Barang Masuk Pertanggal</p>
     <br/>
     <table id="table-data" class="table-table-bordered">
         <thead>
@@ -31,10 +31,10 @@
             </tr>
         @endforeach
 
-        <!-- <script type="text/javascript">
+        <script type="text/javascript">
             window.print();
-        </script> -->
-
+        </script>
+        
         </tbody>
     </table>
 </body>

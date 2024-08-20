@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
     Route::get('barang_keluars/search',[BarangKeluarController::class, 'search'])->name('barang_keluar.search');
 
     Route::get('/laporan_masuks', [LaporanMasukController::class, 'index'])->name('laporan_masuk');
-    Route::get('/laporan_masuks/filter', [LaporanMasukController::class, 'filter'])->name('laporan_masuk.filter');
+    Route::get('/laporan_masuks/filter/{tgl_awal}/{tgl_akhir}', [LaporanMasukController::class, 'filter'])->name('laporan_masuk.filter');
     Route::get('/laporan_masuks/print', [LaporanMasukController::class, 'print'])->name('laporan_masuk.print');
 });
 

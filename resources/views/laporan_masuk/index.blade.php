@@ -7,7 +7,7 @@
         </div>
     </x-slot>
     
-    <form method="GET" action="/filter">
+    <form method="GET" action="/laporan_masuks/filter">
         <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
             <h2 class="text-xl font-semibold leading-tight mb-3">
                 Filter Data Barang Masuk
@@ -27,17 +27,13 @@
                 </div>
             </div>  
             <br><br>   
-            <!-- <x-primary-button  tag="a" onclick="this.href='/filter/'+document.getElementById('tgl_awal').value + 
+            <x-primary-button  tag="a" onclick="this.href='/laporan_masuks/filter/'+document.getElementById('tgl_awal').value + 
             '/' + document.getElementById('tgl_akhir').value " target="_blank">
-                Tampilkan
-            </x-primary-button> --> 
+                Cetak Pertanggal
+            </x-primary-button> 
 
-            <x-primary-button tag="a" href="{{route('laporan_masuk.filter')}}">
-                Tampilkan
-            </x-primary-button>
-
-            <x-print-button tag="a" href="{{route('laporan_masuk.print')}}">
-                Cetak
+            <x-print-button tag="a" href="{{route('laporan_masuk.print')}}" target='blank'>
+                Cetak Semua
             </x-print-button>
 
             <x-export-button tag="a">
