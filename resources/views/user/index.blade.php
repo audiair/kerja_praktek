@@ -2,13 +2,13 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __('Data Barang Keluar') }}
+                {{ __('Data User') }}
             </h2>
         </div>
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        <form class="col-md-6 pb-4" method="get" action=/barang_keluars/search>   
+        <form class="col-md-6 pb-4" method="get" action=/users/search>   
             <div class="relative">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -20,45 +20,42 @@
             </div>
         </form>
 
-        <x-primary-button tag="a" href="{{route('barang_keluar.create')}}">
-            Tambah Barang Keluar
+        <x-primary-button tag="a" href="{{route('user.create')}}" >
+            Tambah User
         </x-primary-button>
-        <br/><br/>
+        <br/><br/>  
+    
         <x-table>
             <x-slot name="header">
                 <tr>
                     <th>NO</th>
-                    <th>TANGGAL KELUAR</th>
-                    <th>BARANG</th>
-                    <th>JUMLAH KELUAR</th>
-                    <th>TOTAL HARGA</th>
-                    <th>KETERANGAN</th>
-                    <th>AKSI</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Password</th>
                 </tr>
             </x-slot>
             @php $num=1; @endphp
-            @foreach($barang_keluars as $barang_keluar)
+            @foreach($users as $user)
             <tr>
                 <td>{{ $num++ }}</td>
-                <td>{{ $barang_keluar->tgl_keluar }}</td>
-                <td>{{ $barang_keluar->barang->kode_barang }}-{{ $barang_keluar->barang->nama_barang }}
-                <td>{{ $barang_keluar->jml_keluar }}</td> 
-                <td>Rp. {{ number_format ($barang_keluar->total_harga) }}</td> 
-                <td>{{ $barang_keluar->keterangan }}</td> 
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->password }}</td>
                 <td>
-                    <x-primary-button tag="a" href="{{route('barang_keluar.edit', $barang_keluar->id)}}">
+                    <x-primary-button tag="a" href="{{route('user.edit', $user->id)}}">
                         EDIT
                     </x-primary-button>
+
                     <x-danger-button x-data="" x-on:click.prevent="$dispatch('open-modal',
-                    'confirm-barang_keluar-deletion')" x-on:click="$dispatch('set-action',
-                    '{{ route('barang_keluar.destroy', $barang_keluar->id) }}')"> {{ __('Delete')}}
+                    'confirm-user-deletion')" x-on:click="$dispatch('set-action',
+                    '{{ route('user.destroy', $user->id) }}')"> {{ __('Delete')}}
                     </x-danger-button>
                 </td>    
             </tr> 
             @endforeach
         </x-table>
         <!-- MODAL DELETE -->
-        <x-modal name="confirm-barang_keluar-deletion" focusable maxWidth="xl">
+        <x-modal name="confirm-user-deletion" focusable maxWidth="xl">
             <form method="post" x-bind:action="action" class="p-6">
                 @csrf
                 @method('delete')
@@ -82,4 +79,5 @@
                 </div>
             </form>
         </x-modal>
+    </div>
 </x-app-layout>

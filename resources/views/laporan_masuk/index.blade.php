@@ -30,7 +30,7 @@
             <!-- <x-primary-button  tag="a" onclick="this.href='/filter/'+document.getElementById('tgl_awal').value + 
             '/' + document.getElementById('tgl_akhir').value " target="_blank">
                 Tampilkan
-            </x-primary-button> -->
+            </x-primary-button> --> 
 
             <x-primary-button tag="a" href="{{route('laporan_masuk.filter')}}">
                 Tampilkan

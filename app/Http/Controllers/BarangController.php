@@ -68,4 +68,25 @@ class BarangController extends Controller
         return redirect()->route('barang');
     }
 
+    public function search(Request $request){
+
+        $search = $request->search;
+
+        $barangs = Barang::where(function($query) use ($search){
+
+            $query->where('kode_barang', 'like', "%$search%")
+            ->orWhere('nama_barang', 'like', "%$search%")
+            ->orWhere('stok', 'like', "%$search%")
+            ->orWhere('satuan', 'like', "%$search%")
+            ->orWhere('harga_satuan', 'like', "%$search%");
+            })
+        
+            ->orWhereHas('kategori', function($query) use ($search){
+                $query->where('kode_kategori', 'like', "%$search%")
+                ->orWhere('kategori_barang', 'like', "%$search%");
+            })->get();
+
+        return view('barang.index', compact('barangs','search'));
+    }
+
 }

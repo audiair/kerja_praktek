@@ -16,6 +16,17 @@
 
     </x-sidebar.link>
 
+    <x-sidebar.link
+        title="Data User"
+        href="{{ route('user') }}"
+        :isActive="request()->routeIs('user')  || request()->routeIs('user.create') || request()->routeIs('user.edit') || request()->routeIs('user.search')"
+    >
+    
+    <x-slot name="icon">
+            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
+
     <div
         x-transition
         x-show="isSidebarOpen || isSidebarHovered"
@@ -27,7 +38,7 @@
     <x-sidebar.link
         title="Barang"
         href="{{ route('barang') }}"
-        :isActive="request()->routeIs('barang') || request()->routeIs('barang.create') || request()->routeIs('barang.edit')"
+        :isActive="request()->routeIs('barang') || request()->routeIs('barang.create') || request()->routeIs('barang.edit') || request()->routeIs('barang.search')"
     >
     <x-slot name="icon">
         <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
@@ -38,7 +49,7 @@
     <x-sidebar.link
         title="Kategori Barang"
         href="{{ route('kategori') }}"
-        :isActive="request()->routeIs('kategori') || request()->routeIs('kategori.create') || request()->routeIs('kategori.edit')"
+        :isActive="request()->routeIs('kategori') || request()->routeIs('kategori.create') || request()->routeIs('kategori.edit') || request()->routeIs('kategori.search')"
     >
     
     <x-slot name="icon">
@@ -57,7 +68,7 @@
     <x-sidebar.link
         title="Barang Masuk"
         href="{{ route('barang_masuk') }}"
-        :isActive="request()->routeIs('barang_masuk') || request()->routeIs('barang_masuk.create') || request()->routeIs('barang_masuk.edit')"
+        :isActive="request()->routeIs('barang_masuk') || request()->routeIs('barang_masuk.create') || request()->routeIs('barang_masuk.edit') || request()->routeIs('barang_masuk.search')"
     >
     
     <x-slot name="icon">
@@ -69,7 +80,7 @@
     <x-sidebar.link
         title="Barang Keluar"
         href="{{ route('barang_keluar') }}"
-        :isActive="request()->routeIs('barang_keluar') || request()->routeIs('barang_keluar.create') || request()->routeIs('barang_keluar.edit')"
+        :isActive="request()->routeIs('barang_keluar') || request()->routeIs('barang_keluar.create') || request()->routeIs('barang_keluar.edit') || request()->routeIs('barang_keluar.search')"
     >
     
     <x-slot name="icon">

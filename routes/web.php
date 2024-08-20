@@ -7,6 +7,7 @@ use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\LaporanMasukController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,12 +49,21 @@ Route::get('/buttons/text-icon', function () {
 })->middleware(['auth'])->name('buttons.text-icon');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('user');
+    Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/users', [UserController::class, 'store'])->name('user.store');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::match(['put', 'patch'],'/users/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('users/search',[UserController::class, 'search'])->name('user.search');
+
     Route::get('/kategoris', [KategoriBarangController::class, 'index'])->name('kategori');
     Route::get('/kategoris/create', [KategoriBarangController::class, 'create'])->name('kategori.create');
     Route::post('/kategoris', [KategoriBarangController::class, 'store'])->name('kategori.store');
     Route::get('/kategoris/{id}/edit', [KategoriBarangController::class, 'edit'])->name('kategori.edit');
     Route::match(['put', 'patch'],'/kategoris/{id}', [KategoriBarangController::class, 'update'])->name('kategori.update');
     Route::delete('/kategoris/{id}', [KategoriBarangController::class, 'destroy'])->name('kategori.destroy');
+    Route::get('kategoris/search',[KategoriBarangController::class, 'search'])->name('kategori.search');
 
     Route::get('/barangs', [BarangController::class, 'index'])->name('barang');
     Route::get('/barangs/create', [BarangController::class, 'create'])->name('barang.create');
@@ -61,6 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/barangs/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
     Route::match(['put', 'patch'],'/barangs/{id}', [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/barangs/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+    Route::get('barangs/search',[BarangController::class, 'search'])->name('barang.search');
 
     Route::get('/barang_masuks', [BarangMasukController::class, 'index'])->name('barang_masuk');
     Route::get('/barang_masuks/create', [BarangMasukController::class, 'create'])->name('barang_masuk.create');
@@ -68,6 +79,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/barang_masuks/{id}/edit', [BarangMasukController::class, 'edit'])->name('barang_masuk.edit');
     Route::match(['put', 'patch'],'/barang_masuks/{id}', [BarangMasukController::class, 'update'])->name('barang_masuk.update');
     Route::delete('/barang_masuks/{id}', [BarangMasukController::class, 'destroy'])->name('barang_masuk.destroy');
+    Route::get('barang_masuks/search',[BarangMasukController::class, 'search'])->name('barang_masuk.search');
 
     Route::get('/barang_keluars', [BarangKeluarController::class, 'index'])->name('barang_keluar');
     Route::get('/barang_keluars/create', [BarangKeluarController::class, 'create'])->name('barang_keluar.create');
@@ -75,6 +87,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/barang_keluars/{id}/edit', [BarangKeluarController::class, 'edit'])->name('barang_keluar.edit');
     Route::match(['put', 'patch'],'/barang_keluars/{id}', [BarangKeluarController::class, 'update'])->name('barang_keluar.update');
     Route::delete('/barang_keluars/{id}', [BarangKeluarController::class, 'destroy'])->name('barang_keluar.destroy');
+    Route::get('barang_keluars/search',[BarangKeluarController::class, 'search'])->name('barang_keluar.search');
 
     Route::get('/laporan_masuks', [LaporanMasukController::class, 'index'])->name('laporan_masuk');
     Route::get('/laporan_masuks/filter', [LaporanMasukController::class, 'filter'])->name('laporan_masuk.filter');

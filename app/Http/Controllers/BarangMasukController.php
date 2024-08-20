@@ -67,4 +67,23 @@ class BarangMasukController extends Controller
 
         return redirect()->route('barang_masuk');
     }
+
+    public function search(Request $request){
+
+        $search = $request->search;
+
+        $barang_masuks = BarangMasuk::where(function($query) use ($search){
+
+            $query->where('tgl_masuk', 'like', "%$search%")
+            ->orWhere('jml_masuk', 'like', "%$search%")
+            ->orWhere('total_harga', 'like', "%$search%");
+            })
+        
+            ->orWhereHas('barang', function($query) use ($search){
+                $query->where('kode_barang', 'like', "%$search%")
+                ->orWhere('nama_barang', 'like', "%$search%");
+            })->get();
+
+        return view('barang_masuk.index', compact('barang_masuks','search'));
+    }
 }

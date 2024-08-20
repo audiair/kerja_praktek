@@ -15,6 +15,14 @@ class Barang extends Model
         return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 
+    // public function barang_masuk(){
+    //     return $this->hasMany(BarangMasuk::class);
+    // }
+
+    // public function barang_keluar(){
+    //     return $this->hasMany(BarangKeluar::class);
+    // }
+
     protected $fillable = [
         'kode_barang',
         'nama_barang',

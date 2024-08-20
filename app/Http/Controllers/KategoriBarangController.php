@@ -57,4 +57,17 @@ class KategoriBarangController extends Controller
         return redirect()->route('kategori');
     }
 
+    public function search(Request $request){
+
+        $search = $request->search;
+
+        $kategoris = Kategori::where(function($query) use ($search){
+
+            $query->where('kode_kategori', 'like', "%$search%")
+            ->orWhere('kategori_barang', 'like', "%$search%");
+            })->get();
+
+        return view('kategori.index', compact('kategoris','search'));
+    }
+
 }
