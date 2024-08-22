@@ -5,7 +5,7 @@
         class="inline-flex items-center gap-2"
     >
         <x-application-logo aria-hidden="true" class="w-10 h-auto" />
-
+        <h2 class="text-sm text-center font-bold leading-tight mt-4"> JAYA ABADI PS (PETSHOP) </h2>
         <span class="sr-only">Dashboard</span>
     </a>
 

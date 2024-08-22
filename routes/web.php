@@ -94,11 +94,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/laporan_masuks/filter/{tgl_awal}/{tgl_akhir}', [LaporanMasukController::class, 'filter'])->name('laporan_masuk.filter');
     Route::get('/laporan_masuks/print', [LaporanMasukController::class, 'print'])->name('laporan_masuk.print');
     Route::get('/laporan_masuks/export', [LaporanMasukController::class, 'export'])->name('laporan_masuk.export');
-    Route::post('/laporan_masuks/import', [LaporanMasukController::class, 'import'])->name('laporan_masuk.import');
-
+    
     Route::get('/laporan_keluars', [LaporanKeluarController::class, 'index'])->name('laporan_keluar');
     Route::get('/laporan_keluars/filter/{tgl_awal}/{tgl_akhir}', [LaporanKeluarController::class, 'filter'])->name('laporan_keluar.filter');
     Route::get('/laporan_keluars/print', [LaporanKeluarController::class, 'print'])->name('laporan_keluar.print');
+    Route::get('/laporan_keluars/export', [LaporanKeluarController::class, 'export'])->name('laporan_keluar.export');
 });
 
 require __DIR__ . '/auth.php';

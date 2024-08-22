@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LaporanKeluarExport;
 use App\Models\BarangKeluar;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanKeluarController extends Controller
 {
@@ -24,5 +26,9 @@ class LaporanKeluarController extends Controller
         $barang_keluar = BarangKeluar::with('barang')->whereBetween('tgl_keluar',[$tgl_awal,$tgl_akhir])->get();
         $pdf = PDF::loadview('laporan_keluar.cetak_filter', ['barang_keluars' => $barang_keluar]);
         return $pdf->download('laporan_keluar_pertanggal.pdf');
+    }
+
+    public function export(){
+        return Excel::download(new LaporanKeluarExport, 'laporan_keluar.xlsx');
     }
 }

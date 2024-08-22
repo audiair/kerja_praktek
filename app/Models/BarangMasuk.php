@@ -14,8 +14,7 @@ class BarangMasuk extends Model
     public function barang(): BelongsTo
     {
         return $this->belongsTo(Barang::class, 'id_barang');
-    }
-
+    } 
     protected $fillable = [
         'tgl_masuk',
         'id_barang',
@@ -23,7 +22,7 @@ class BarangMasuk extends Model
         'total_harga',
     ];
 
-    public static function getDataBarang_masuks()
+    public static function getDataBarangMasuks()
     {
         $barang_masuks = BarangMasuk::with('barang')->get();
         $barang_masuks_filter = [];

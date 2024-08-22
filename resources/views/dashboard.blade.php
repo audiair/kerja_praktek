@@ -8,6 +8,15 @@
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        {{ __("Selamat Datang!")  }}
+        <p class="font-semibold">
+            {{ __("SELAMAT DATANG DI WEBSITE PERSEDIAAN JAYA ABADI PS (PETSHOP)!")  }}
+        </p>    
     </div>
+    </br>
+
+    <div class="inline-flex">
+        <img width="500" src="{{asset('/logo/ps1.jpg')}}" alt="" class="mr-8">
+        <img width="500" src="{{asset('/logo/ps2.jpg')}}" alt="">
+    </div>
+ 
 </x-app-layout>

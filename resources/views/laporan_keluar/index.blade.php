@@ -36,7 +36,7 @@
                 Cetak Semua
             </x-print-button>
 
-            <x-export-button tag="a">
+            <x-export-button tag="a" href="{{route('laporan_keluar.export')}}" target='_blank'>
                 Export Excel
             </x-export-button>
         </div>

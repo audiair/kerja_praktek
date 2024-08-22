@@ -2,14 +2,13 @@
 
 namespace App\Exports;
 
-use App\Models\BarangMasuk;
-use App\Models\LaporanMasuk;
+use App\Models\BarangKeluar;
+use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\FromArray;
 
-class LaporanMasukExport implements FromArray, WithHeadings, ShouldAutoSize
+class LaporanKeluarExport implements FromArray, WithHeadings, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -17,22 +16,23 @@ class LaporanMasukExport implements FromArray, WithHeadings, ShouldAutoSize
 
     public function array(): array
     {
-        return BarangMasuk::getDataBarangMasuks();
+        return BarangKeluar::getDataBarangKeluars();
     }
 
     public function headings(): array
     {
         return [
             'No',
-            'Tanggal Masuk',
+            'Tanggal Keluar',
             'Barang',
-            'Jumlah Masuk',
-            'Total Harga'
+            'Jumlah Keluar',
+            'Total Harga',
+            'Keterangan'
         ];
     }
 
     public function collection()
     {
-        return BarangMasuk::with('barang')->get();
+        return BarangKeluar::with('barang')->get();
     }
 }
