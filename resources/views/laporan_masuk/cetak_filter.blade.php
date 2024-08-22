@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <h1 class="text-center">Data Barang Masuk</h1>
-    <p class="text-center">Laporan Data Barang Masuk Pertanggal</p>
+<h1 class="text-center">JAYA ABADI PS (PETSHOP)</h1>
+<h2 class="text-center">Laporan Data Barang Masuk</h2>
     <br/>
-    <table id="table-data" class="table-table-bordered">
+    <table id="table-data" class="table table-bordered">
         <thead>
             <tr>
                 <th>NO</th>
@@ -31,9 +31,9 @@
             </tr>
         @endforeach
 
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
             window.print();
-        </script>
+        </script> -->
         
         </tbody>
     </table>

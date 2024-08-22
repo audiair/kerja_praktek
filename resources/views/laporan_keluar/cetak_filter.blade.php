@@ -13,21 +13,23 @@
         <thead>
             <tr>
                 <th>NO</th>
-                <th>TANGGAL MASUK</th>
+                <th>TANGGAL KELUAR</th>
                 <th>BARANG</th>
-                <th>JUMLAH MASUK</th>
+                <th>JUMLAH KELUAR</th>
                 <th>TOTAL HARGA</th>
+                <th>KETERANGAN</th>
             </tr>
         </thead>
         <tbody>
         @php $no=1; @endphp
-        @foreach($barang_masuks as $barang_masuk)
+        @foreach($barang_keluars as $barang_keluar)
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>{{ $barang_masuk->tgl_masuk }}</td>
-                <td>{{ $barang_masuk->barang->kode_barang }}-{{ $barang_masuk->barang->nama_barang }}
-                <td>{{ $barang_masuk->jml_masuk }}</td>
-                <td>{{ $barang_masuk->total_harga }}</td>
+                <td>{{ $barang_keluar->tgl_keluar }}</td>
+                <td>{{ $barang_keluar->barang->kode_barang }}-{{ $barang_keluar->barang->nama_barang }}
+                <td>{{ $barang_keluar->jml_keluar }}</td>
+                <td>{{ $barang_keluar->total_harga }}</td>
+                <td>{{ $barang_keluar->keterangan }}</td>
             </tr>
         @endforeach
 

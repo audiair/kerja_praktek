@@ -4,6 +4,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\BarangMasukController;
+use App\Http\Controllers\LaporanKeluarController;
 use App\Http\Controllers\LaporanMasukController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -92,6 +93,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/laporan_masuks', [LaporanMasukController::class, 'index'])->name('laporan_masuk');
     Route::get('/laporan_masuks/filter/{tgl_awal}/{tgl_akhir}', [LaporanMasukController::class, 'filter'])->name('laporan_masuk.filter');
     Route::get('/laporan_masuks/print', [LaporanMasukController::class, 'print'])->name('laporan_masuk.print');
+    Route::get('/laporan_masuks/export', [LaporanMasukController::class, 'export'])->name('laporan_masuk.export');
+    Route::post('/laporan_masuks/import', [LaporanMasukController::class, 'import'])->name('laporan_masuk.import');
+
+    Route::get('/laporan_keluars', [LaporanKeluarController::class, 'index'])->name('laporan_keluar');
+    Route::get('/laporan_keluars/filter/{tgl_awal}/{tgl_akhir}', [LaporanKeluarController::class, 'filter'])->name('laporan_keluar.filter');
+    Route::get('/laporan_keluars/print', [LaporanKeluarController::class, 'print'])->name('laporan_keluar.print');
 });
 
 require __DIR__ . '/auth.php';

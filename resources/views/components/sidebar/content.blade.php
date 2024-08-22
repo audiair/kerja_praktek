@@ -107,6 +107,17 @@
         </x-slot>
     </x-sidebar.link>
 
+    <x-sidebar.link
+        title="Laporan Barang Keluar"
+        href="{{ route('laporan_keluar') }}"
+        :isActive="request()->routeIs('laporan_keluar')"
+    >
+    
+    <x-slot name="icon">
+            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
+
     <!-- <x-sidebar.dropdown
         title="Buttons"
         :active="Str::startsWith(request()->route()->uri(), 'buttons')"

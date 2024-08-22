@@ -23,4 +23,20 @@ class BarangMasuk extends Model
         'total_harga',
     ];
 
+    public static function getDataBarang_masuks()
+    {
+        $barang_masuks = BarangMasuk::with('barang')->get();
+        $barang_masuks_filter = [];
+
+        $no = 1;
+        for ($i=0; $i < $barang_masuks->count(); $i++) { 
+            $barang_masuks_filter[$i]['no'] = $no++;
+            $barang_masuks_filter[$i]['tgl_masuk'] = $barang_masuks[$i]->tgl_masuk;
+            $barang_masuks_filter[$i]['id_barang'] = $barang_masuks[$i]->id_barang;
+            $barang_masuks_filter[$i]['jml_masuk'] = $barang_masuks[$i]->jml_masuk;
+            $barang_masuks_filter[$i]['total_harga'] = $barang_masuks[$i]->total_harga;
+        } 
+        return $barang_masuks_filter;
+    }
+
 }
