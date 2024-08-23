@@ -1,0 +1,1 @@
+<img width="26" src="{{asset('/logo/add-product.png')}}" alt="">

@@ -1,0 +1,1 @@
+<img width="28" src="{{asset('/logo/delivery.png')}}" alt="">

@@ -11,7 +11,7 @@
     >
 
     <x-slot name="icon">
-        <x-icons.dashboard class="w-6 h-6" aria-hidden="true" />
+        <x-icons.home class="w-6 h-6" aria-hidden="true" />
     </x-slot>
 
     </x-sidebar.link>
@@ -22,8 +22,8 @@
         :isActive="request()->routeIs('user')  || request()->routeIs('user.create') || request()->routeIs('user.edit') || request()->routeIs('user.search')"
     >
     
-    <x-slot name="icon">
-            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        <x-slot name="icon">
+            <x-icons.users class="w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
 
@@ -41,7 +41,7 @@
         :isActive="request()->routeIs('barang') || request()->routeIs('barang.create') || request()->routeIs('barang.edit') || request()->routeIs('barang.search')"
     >
     <x-slot name="icon">
-        <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        <x-icons.barang class="w-6 h-6" aria-hidden="true" />
     </x-slot>
 
     </x-sidebar.link>
@@ -71,8 +71,8 @@
         :isActive="request()->routeIs('barang_masuk') || request()->routeIs('barang_masuk.create') || request()->routeIs('barang_masuk.edit') || request()->routeIs('barang_masuk.search')"
     >
     
-    <x-slot name="icon">
-            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        <x-slot name="icon">
+            <x-icons.barang_masuk class="w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
 
@@ -84,7 +84,7 @@
     >
     
     <x-slot name="icon">
-            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <x-icons.barang_keluar class="w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
 
@@ -103,7 +103,7 @@
     >
     
     <x-slot name="icon">
-            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <x-icons.laporan class="w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
 
@@ -114,7 +114,7 @@
     >
     
     <x-slot name="icon">
-            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <x-icons.laporan class="w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
 
