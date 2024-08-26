@@ -32,6 +32,23 @@
                 <x-input-error class="mt-2" :messages="$errors->get('password')" />
             </div>
 
+            
+            <div class="max-w-xl">
+                <x-input-label for="role" value="ROLE" />
+                <select name="roles[]" class="mt-1 block w-full" multiple id="">
+                    <option value="">Open this select menu</option>
+                    @foreach ($roles as $role)
+                    <option 
+                        value="{{ $role }}" 
+                        {{ in_array($role, $userRoles) ? 'selected':''}}
+                        >
+                        {{ $role }}
+                    </option>
+                    @endforeach
+                </select>
+                <x-input-error class="mt-2" :messages="$errors->get('roles')" />
+            </div>
+
             <x-secondary-button tag="a" href="{{ route('user') }}">Cancel</x-secondary-button>
             <x-primary-button name="save" value="true">Ubah</x-primary-button>
         </form>

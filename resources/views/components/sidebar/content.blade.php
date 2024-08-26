@@ -16,6 +16,7 @@
 
     </x-sidebar.link>
 
+    @hasrole('owner|superAdmin')
     <x-sidebar.link
         title="Data User"
         href="{{ route('user') }}"
@@ -26,6 +27,7 @@
             <x-icons.users class="w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
+    @endhasrole
 
     <div
         x-transition
@@ -87,7 +89,8 @@
             <x-icons.barang_keluar class="w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
-
+    
+    @hasrole('owner|superAdmin')
     <div
         x-transition
         x-show="isSidebarOpen || isSidebarHovered"
@@ -106,7 +109,9 @@
             <x-icons.laporan class="w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
+    @endhasrole
 
+    @hasrole('owner|superAdmin')
     <x-sidebar.link
         title="Laporan Barang Keluar"
         href="{{ route('laporan_keluar') }}"
@@ -117,6 +122,7 @@
             <x-icons.laporan class="w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
+    @endhasrole
 
     <!-- <x-sidebar.dropdown
         title="Buttons"

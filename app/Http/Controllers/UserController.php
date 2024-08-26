@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -14,19 +15,26 @@ class UserController extends Controller
     }
 
     public function create(){
-        $data['users'] = User::all();
-        return view('user.create' ,$data);
+        $data['roles'] = Role::pluck('name', 'name')->all();
+        return view('user.create', $data);
     }
 
     public function store(Request $request){
 
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|max:20',
+            'roles' => 'required'
         ]);
 
-        User::create($validated);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $user->syncRoles($request->roles);
 
         if($request->save == true) {
             return redirect()->route('user');
@@ -35,21 +43,40 @@ class UserController extends Controller
         }
     }
 
-    public function edit(string $id){
-        $data['users'] = User::find($id);
-        return view('user.edit', $data);
+    public function edit(User $users, string $id){
+        $users = User::find($id);
+        $roles = Role::pluck('name', 'name')->all();
+        $userRoles = $users->roles->pluck('name', 'name')->all();
+        return view('user.edit', [
+            'users' => $users,
+            'roles' => $roles,
+            'userRoles' => $userRoles
+        ]);
     }
 
     public function update(Request $request, string $id){
         $user = User::find($id);
 
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'nullable|string|min:8',
+            'roles' => 'required'
         ]);
         
-        User::where('id', $id)->update($validated);
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ];
+
+        if(!empty($request->password)){
+            $data += [
+                'password' => Hash::make($request->password),
+            ];
+        }
+        User::where('id', $id)->update($data);
+        $user->syncRoles($request->roles);
 
         return redirect()->route('user');
     }

@@ -30,6 +30,16 @@
                 value="{{ old('password') }}" required />
                 <x-input-error class="mt-2" :messages="$errors->get('password')" />
             </div>
+
+            <div class="max-w-xl">
+                <x-input-label for="role" value="ROLE" />
+                <select name="roles[]" class="mt-1 block w-full" multiple id="">
+                    <option selected>Open this select menu</option>
+                    @foreach ($roles as $role)
+                    <option value="{{ $role }}">{{ $role }}</option>
+                    @endforeach
+                </select>
+            </div>
                         
             <x-secondary-button tag="a" href="{{ route('user') }}">Cancel</x-secondary-button>
             <x-primary-button name="save" value="true">Save</x-primary-button>

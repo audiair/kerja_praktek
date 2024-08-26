@@ -20,10 +20,12 @@
             </div>
         </form>
 
+        @role('owner')
         <x-primary-button tag="a" href="{{route('user.create')}}" >
             Tambah User
         </x-primary-button>
         <br/><br/>  
+        @endrole
     
         <x-table>
             <x-slot name="header">
@@ -31,6 +33,7 @@
                     <th>NO</th>
                     <th>Nama</th>
                     <th>Email</th>
+                    <th>Role</th>
                     <th>Password</th>
                 </tr>
             </x-slot>
@@ -40,7 +43,16 @@
                 <td>{{ $num++ }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
+                <td>
+                    @if(!empty($user->getRoleNames()))
+                    @foreach ($user->getRoleNames() as $rolename)
+                    {{ $rolename }}
+                    @endforeach
+                    @endif
+                </td>
                 <td>{{ $user->password }}</td>
+
+                @role('owner')
                 <td>
                     <x-primary-button tag="a" href="{{route('user.edit', $user->id)}}">
                         EDIT
@@ -51,6 +63,7 @@
                     '{{ route('user.destroy', $user->id) }}')"> {{ __('Delete')}}
                     </x-danger-button>
                 </td>    
+                @endrole
             </tr> 
             @endforeach
         </x-table>

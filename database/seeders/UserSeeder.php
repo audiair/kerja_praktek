@@ -16,24 +16,32 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // DB::table('users')->insert([
-        //     [
-        //         'name' => 'admin1',
-        //         'email' => 'admin@gmail.com',
-        //         'password' => Hash::make('password'),
-        //     ]
-        // ]);
+        $owner = User::create([
+            'name' => 'Owner',
+            'email' => 'owner@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
 
-        $faker = Faker::create('id_ID');
+        $owner->assignRole('owner');
 
-        for ($i=0; $i < 30; $i++) { 
-            DB::table('users')->insert([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'password' => Hash::make($faker->password),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        $admin = User::create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $admin->assignRole('admin');
+
+        // $faker = Faker::create('id_ID');
+
+        // for ($i=0; $i < 30; $i++) { 
+        //     DB::table('users')->insert([
+        //         'name' => $faker->name,
+        //         'email' => $faker->email,
+        //         'password' => Hash::make($faker->password),
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //     ]);
+        // }
     }
 }
