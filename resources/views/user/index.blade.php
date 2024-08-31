@@ -34,7 +34,7 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Role</th>
-                    <th>Password</th>
+                    <th>Aksi</th>
                 </tr>
             </x-slot>
             @php $num=1; @endphp
@@ -50,7 +50,6 @@
                     @endforeach
                     @endif
                 </td>
-                <td>{{ $user->password }}</td>
 
                 @role('owner')
                 <td>

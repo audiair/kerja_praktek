@@ -20,34 +20,47 @@
 
             <div class="max-w-xl">
                 <x-input-label for="email" value="EMAIL" />
-                <x-text-input id="email" type="text" name="email" class="mt-1 block w-full"
+                <x-text-input id="email" type="text" name="email" class="mt-1 block w-full" readonly
                 value="{{ old('email', $users->email) }}" required />
                 <x-input-error class="mt-2" :messages="$errors->get('email')" />
             </div>
 
             <div class="max-w-xl">
                 <x-input-label for="password" value="PASSWORD" />
-                <x-text-input id="password" type="text" name="password" class="mt-1 block w-full"
-                value="{{ old('password', $users->password) }}" required />
+                <x-text-input id="password" type="text" name="password" class="mt-1 block w-full"/>
                 <x-input-error class="mt-2" :messages="$errors->get('password')" />
             </div>
 
             
             <div class="max-w-xl">
                 <x-input-label for="role" value="ROLE" />
-                <select name="roles[]" class="mt-1 block w-full" multiple id="">
+                <x-select-input name="roles[]" class="mt-1 block w-full" id="role">
                     <option value="">Open this select menu</option>
                     @foreach ($roles as $role)
                     <option 
                         value="{{ $role }}" 
-                        {{ in_array($role, $userRoles) ? 'selected':''}}
+                        {{ in_array($role, $userRoles) ? 'selected' : '' }}
                         >
                         {{ $role }}
                     </option>
                     @endforeach
-                </select>
+                </x-select-input>
                 <x-input-error class="mt-2" :messages="$errors->get('roles')" />
             </div>
+
+            <!-- <div class="max-w-xl">
+                <x-input-label for="role_name" value="ROLE" />
+                <x-select-input id="role_name" name="role_name" class="mt-1 block w-full" required>
+                    <option value="">Open this select menu</option>
+                    @foreach ($roles as $key => $value)
+                    @if (old('name') == $key)
+                        <option value="{{ $key }}" selected>{{ $value }}</option>
+                    @else
+                        <option value="{{ $key }}">{{ $value }}</option>
+                    @endif
+                    @endforeach
+                </x-select-input>
+            </div> -->
 
             <x-secondary-button tag="a" href="{{ route('user') }}">Cancel</x-secondary-button>
             <x-primary-button name="save" value="true">Ubah</x-primary-button>

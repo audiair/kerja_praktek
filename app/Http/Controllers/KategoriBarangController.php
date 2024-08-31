@@ -25,8 +25,13 @@ class KategoriBarangController extends Controller
 
         Kategori::create($validated);
 
+        $notification = array(
+            'message' => "Kategori barang berhasil ditambahkan!",
+            'alert-type' => 'success'
+        );
+
         if($request->save == true) {
-            return redirect()->route('kategori');
+            return redirect()->route('kategori')->with($notification);
         } else {
             return redirect()->route('kategori.create');
         }
@@ -47,14 +52,24 @@ class KategoriBarangController extends Controller
         
         Kategori::where('id', $id)->update($validated);
 
-        return redirect()->route('kategori');
+        $notification = array(
+            'message' => "Kategori barang berhasil diupdate!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('kategori')->with($notification);
     }
 
     public function destroy(string $id){
         $kategori = Kategori::find($id);
         $kategori->delete();
 
-        return redirect()->route('kategori');
+        $notification = array(
+            'message' => "Kategori barang berhasil dihapus!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('kategori')->with($notification);
     }
 
     public function search(Request $request){

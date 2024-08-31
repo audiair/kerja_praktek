@@ -32,7 +32,7 @@ class BarangKeluar extends Model
         for ($i=0; $i < $barang_keluars->count(); $i++) { 
             $barang_keluars_filter[$i]['no'] = $no++;
             $barang_keluars_filter[$i]['tgl_keluar'] = $barang_keluars[$i]->tgl_keluar;
-            $barang_keluars_filter[$i]['id_barang'] = $barang_keluars[$i]->id_barang;
+            $barang_keluars_filter[$i]['barang'] = $barang_keluars[$i]->barang->nama_barang;
             $barang_keluars_filter[$i]['jml_keluar'] = $barang_keluars[$i]->jml_keluar;
             $barang_keluars_filter[$i]['total_harga'] = $barang_keluars[$i]->total_harga;
             $barang_keluars_filter[$i]['keterangan'] = $barang_keluars[$i]->keterangan;

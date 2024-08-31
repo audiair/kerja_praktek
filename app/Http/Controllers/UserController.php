@@ -25,7 +25,7 @@ class UserController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|max:20',
-            'roles' => 'required'
+            'role_name' => 'required'
         ]);
 
         $user = User::create([
@@ -34,10 +34,15 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user->syncRoles($request->roles);
+        $user->syncRoles($request->role_name);
+
+        $notification = array(
+            'message' => "User berhasil ditambahkan!",
+            'alert-type' => 'success'
+        );
 
         if($request->save == true) {
-            return redirect()->route('user');
+            return redirect()->route('user')->with($notification);
         } else {
             return redirect()->route('user.create');
         }
@@ -59,7 +64,6 @@ class UserController extends Controller
 
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
             'password' => 'nullable|string|min:8',
             'roles' => 'required'
         ]);
@@ -67,7 +71,6 @@ class UserController extends Controller
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
         ];
 
         if(!empty($request->password)){
@@ -78,14 +81,24 @@ class UserController extends Controller
         User::where('id', $id)->update($data);
         $user->syncRoles($request->roles);
 
-        return redirect()->route('user');
+        $notification = array(
+            'message' => "User berhasil diupdate!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('user')->with($notification);
     }
 
     public function destroy(string $id){
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('user');
+        $notification = array(
+            'message' => "User berhasil dihapus!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('user')->with($notification);
     }
 
     public function search(Request $request){

@@ -33,8 +33,13 @@ class BarangKeluarController extends Controller
         BarangKeluar::create($validated);
         Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
 
+        $notification = array(
+            'message' => "Barang keluar berhasil ditambahkan!",
+            'alert-type' => 'success'
+        );
+
         if($request->save == true) {
-            return redirect()->route('barang_keluar');
+            return redirect()->route('barang_keluar')->with($notification);
         } else {
             return redirect()->route('barang_keluar.create');
         }
@@ -63,14 +68,24 @@ class BarangKeluarController extends Controller
         BarangKeluar::where('id', $id)->update($validated);
         Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
 
-        return redirect()->route('barang_keluar');
+        $notification = array(
+            'message' => "Barang keluar berhasil diupdate!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('barang_keluar')->with($notification);
     }
 
     public function destroy(string $id){
         $barang_keluar = BarangKeluar::find($id);
         $barang_keluar->delete();
 
-        return redirect()->route('barang_keluar');
+        $notification = array(
+            'message' => "Barang keluar berhasil dihapus!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('barang_keluar')->with($notification);
     }
 
     public function search(Request $request){
