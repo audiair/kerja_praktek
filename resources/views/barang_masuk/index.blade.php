@@ -30,6 +30,7 @@
                     <tr>
                         <th>NO</th>
                         <th>TANGGAL MASUK</th>
+                        <th>USER</th>
                         <th>BARANG</th>
                         <th>JUMLAH MASUK</th>
                         <th>TOTAL HARGA</th>
@@ -41,6 +42,7 @@
                 <tr>
                     <td>{{ $num++ }}</td>
                     <td>{{ $barang_masuk->tgl_masuk }}</td>
+                    <td>{{ Auth::user()->name }}
                     <td>{{ $barang_masuk->barang->kode_barang }}-{{ $barang_masuk->barang->nama_barang }}
                     <td>{{ $barang_masuk->jml_masuk }}</td> 
                     <td>Rp. {{number_format ($barang_masuk->total_harga) }}</td> 

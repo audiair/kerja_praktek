@@ -29,6 +29,7 @@
                 <tr>
                     <th>NO</th>
                     <th>TANGGAL KELUAR</th>
+                    <th>USER</th>
                     <th>BARANG</th>
                     <th>JUMLAH KELUAR</th>
                     <th>TOTAL HARGA</th>
@@ -41,6 +42,7 @@
             <tr>
                 <td>{{ $num++ }}</td>
                 <td>{{ $barang_keluar->tgl_keluar }}</td>
+                <td>{{ Auth::user()->name }}
                 <td>{{ $barang_keluar->barang->kode_barang }}-{{ $barang_keluar->barang->nama_barang }}
                 <td>{{ $barang_keluar->jml_keluar }}</td> 
                 <td>Rp. {{ number_format ($barang_keluar->total_harga) }}</td> 

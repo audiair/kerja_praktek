@@ -49,9 +49,9 @@ Route::get('/buttons/text-icon', function () {
     return view('buttons-showcase.text-icon');
 })->middleware(['auth'])->name('buttons.text-icon');
 
-Route::middleware('auth', 'role:owner|admin|superAdmin')->group(function () {
+Route::middleware('auth', 'role:owner|admin')->group(function () {
 
-    Route::get('/users', [UserController::class, 'index'])->name('user')->middleware(['role:owner|superAdmin']);
+    Route::get('/users', [UserController::class, 'index'])->name('user')->middleware(['role:owner']);
     Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
     Route::post('/users', [UserController::class, 'store'])->name('user.store');
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
@@ -91,12 +91,12 @@ Route::middleware('auth', 'role:owner|admin|superAdmin')->group(function () {
     Route::delete('/barang_keluars/{id}', [BarangKeluarController::class, 'destroy'])->name('barang_keluar.destroy');
     Route::get('barang_keluars/search',[BarangKeluarController::class, 'search'])->name('barang_keluar.search');
 
-    Route::get('/laporan_masuks', [LaporanMasukController::class, 'index'])->name('laporan_masuk')->middleware(['role:owner|superAdmin']);
+    Route::get('/laporan_masuks', [LaporanMasukController::class, 'index'])->name('laporan_masuk')->middleware(['role:owner']);
     Route::get('/laporan_masuks/filter/{tgl_awal}/{tgl_akhir}', [LaporanMasukController::class, 'filter'])->name('laporan_masuk.filter');
     Route::get('/laporan_masuks/print', [LaporanMasukController::class, 'print'])->name('laporan_masuk.print');
     Route::get('/laporan_masuks/export', [LaporanMasukController::class, 'export'])->name('laporan_masuk.export');
     
-    Route::get('/laporan_keluars', [LaporanKeluarController::class, 'index'])->name('laporan_keluar')->middleware(['role:owner|superAdmin']);
+    Route::get('/laporan_keluars', [LaporanKeluarController::class, 'index'])->name('laporan_keluar')->middleware(['role:owner']);
     Route::get('/laporan_keluars/filter/{tgl_awal}/{tgl_akhir}', [LaporanKeluarController::class, 'filter'])->name('laporan_keluar.filter');
     Route::get('/laporan_keluars/print', [LaporanKeluarController::class, 'print'])->name('laporan_keluar.print');
     Route::get('/laporan_keluars/export', [LaporanKeluarController::class, 'export'])->name('laporan_keluar.export');

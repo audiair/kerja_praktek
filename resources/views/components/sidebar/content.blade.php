@@ -16,7 +16,7 @@
 
     </x-sidebar.link>
 
-    @hasrole('owner|superAdmin')
+    @hasrole('owner')
     <x-sidebar.link
         title="Data User"
         href="{{ route('user') }}"
@@ -90,7 +90,7 @@
         </x-slot>
     </x-sidebar.link>
     
-    @hasrole('owner|superAdmin')
+    @hasrole('owner')
     <div
         x-transition
         x-show="isSidebarOpen || isSidebarHovered"
@@ -111,7 +111,7 @@
     </x-sidebar.link>
     @endhasrole
 
-    @hasrole('owner|superAdmin')
+    @hasrole('owner')
     <x-sidebar.link
         title="Laporan Barang Keluar"
         href="{{ route('laporan_keluar') }}"
