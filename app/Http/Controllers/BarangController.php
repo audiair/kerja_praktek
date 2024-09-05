@@ -30,10 +30,20 @@ class BarangController extends Controller
 
         Barang::create($validated);
 
+        $notification = array(
+            'message' => "Data Barang berhasil ditambahkan!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data Barang gagal ditambahkan!",
+            'alert-type' => 'success'
+        );
+
         if($request->save == true) {
-            return redirect()->route('barang')->with('message', "Data Barang berhasil ditambahkan!");
+            return redirect()->route('barang')->with($notification);
         } else {
-            return redirect()->route('barang.create');
+            return redirect()->route('barang.create')->with($notifications);
         }
     }
 
@@ -58,14 +68,33 @@ class BarangController extends Controller
         
         Barang::where('id', $id)->update($validated);
 
-        return redirect()->route('barang')->with('message', "Data Barang berhasil diupdate!");
+        $notification = array(
+            'message' => "Data Barang berhasil diperbaharui!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data Barang gagal diperbaharui!",
+            'alert-type' => 'error'
+        );
+
+        if($request->save == true) {
+            return redirect()->route('barang')->with($notification);
+        } else {
+            return redirect()->route('barang.edit')->with($notifications);
+        }
     }
   
     public function destroy(string $id){
         $barang = Barang::find($id);
         $barang->delete();
 
-        return redirect()->route('barang')->with('message', "Data Barang berhasil dihapus!");
+        $notification = array(
+            'message' => "Data Barang berhasil dihapus!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('barang')->with($notification);
     }
 
     public function search(Request $request){

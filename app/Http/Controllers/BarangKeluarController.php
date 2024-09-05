@@ -32,11 +32,21 @@ class BarangKeluarController extends Controller
 
         BarangKeluar::create($validated);
         Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
+        
+        $notification = array(
+            'message' => "Data Barang Keluar berhasil ditambahkan!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data Barang Keluar gagal ditambahkan!",
+            'alert-type' => 'error'
+        );
 
         if($request->save == true) {
-            return redirect()->route('barang_keluar');
+            return redirect()->route('barang_keluar')->with($notification);
         } else {
-            return redirect()->route('barang_keluar.create');
+            return redirect()->route('barang_keluar.create')->with($notifications);
         }
     }
 
@@ -63,14 +73,33 @@ class BarangKeluarController extends Controller
         BarangKeluar::where('id', $id)->update($validated);
         Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
 
-        return redirect()->route('barang_keluar');
+        $notification = array(
+            'message' => "Data Barang Keluar berhasil diperbaharui!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data Barang Keluar gagal diperbaharui!",
+            'alert-type' => 'error'
+        );
+
+        if($request->save == true) {
+            return redirect()->route('barang_keluar')->with($notification);
+        } else {
+            return redirect()->route('barang_keluar.edit')->with($notifications);
+        }
     }
 
     public function destroy(string $id){
         $barang_keluar = BarangKeluar::find($id);
         $barang_keluar->delete();
 
-        return redirect()->route('barang_keluar');
+        $notification = array(
+            'message' => "Data Barang Keluar berhasil dihapus!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('barang_keluar')->with($notification);
     }
 
     public function search(Request $request){

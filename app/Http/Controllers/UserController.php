@@ -36,11 +36,22 @@ class UserController extends Controller
 
         $user->syncRoles($request->role_name);
 
+        $notification = array(
+            'message' => "Data User berhasil ditambahkan!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data User gagal ditambahkan!",
+            'alert-type' => 'error'
+        );
+
         if($request->save == true) {
-            return redirect()->route('user');
+            return redirect()->route('user')->with($notification);
         } else {
-            return redirect()->route('user.create');
+            return redirect()->route('user.create')->with($notifications);
         }
+
     }
 
     public function edit(User $users, string $id){
@@ -76,14 +87,33 @@ class UserController extends Controller
         User::where('id', $id)->update($data);
         $user->syncRoles($request->roles);
 
-        return redirect()->route('user');
+        $notification = array(
+            'message' => "Data User berhasil diperbaharui!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data User gagal diperbaharui!",
+            'alert-type' => 'error'
+        );
+
+        if($request->save == true) {
+            return redirect()->route('user')->with($notification);
+        } else {
+            return redirect()->route('user.edit')->with($notifications);
+        }
     }
 
     public function destroy(string $id){
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('user');
+        $notification = array(
+            'message' => "Data User berhasil dihapus!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('user')->with($notification);
     }
 
     public function search(Request $request){

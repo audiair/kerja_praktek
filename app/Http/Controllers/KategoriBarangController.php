@@ -25,10 +25,20 @@ class KategoriBarangController extends Controller
 
         Kategori::create($validated);
 
+        $notification = array(
+            'message' => "Data Kategori Barang berhasil ditambahkan!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data Kategori Barang gagal ditambahkan!",
+            'alert-type' => 'error'
+        );
+
         if($request->save == true) {
-            return redirect()->route('kategori');
+            return redirect()->route('kategori')->with($notification);
         } else {
-            return redirect()->route('kategori.create');
+            return redirect()->route('kategori.create')->with($notifications);
         }
     }
 
@@ -47,14 +57,33 @@ class KategoriBarangController extends Controller
         
         Kategori::where('id', $id)->update($validated);
 
-        return redirect()->route('kategori');
+        $notification = array(
+            'message' => "Data Kategori Barang berhasil diperbaharui!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data Kategori Barang gagal diperbaharui!",
+            'alert-type' => 'error'
+        );
+
+        if($request->save == true) {
+            return redirect()->route('kategori')->with($notification);
+        } else {
+            return redirect()->route('kategori.edit')->with($notifications);
+        }
     }
 
     public function destroy(string $id){
         $kategori = Kategori::find($id);
         $kategori->delete();
 
-        return redirect()->route('kategori');
+        $notification = array(
+            'message' => "Data Kategori Barang berhasil dihapus!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('kategori')->with($notification);
     }
 
     public function search(Request $request){

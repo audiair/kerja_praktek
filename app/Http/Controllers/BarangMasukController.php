@@ -30,11 +30,21 @@ class BarangMasukController extends Controller
         $id_barang = $request->id_barang;
         BarangMasuk::create($validated);
         Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
+
+        $notification = array(
+            'message' => "Data Barang Masuk berhasil ditambahkan!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data Barang Masuk gagal ditambahkan!",
+            'alert-type' => 'error'
+        );
         
         if($request->save == true) {
-            return redirect()->route('barang_masuk');
+            return redirect()->route('barang_masuk')->with($notification);
         } else {
-            return redirect()->route('barang_masuk.create');
+            return redirect()->route('barang_masuk.create')->with($notifications);
         }
     }
 
@@ -58,14 +68,33 @@ class BarangMasukController extends Controller
         BarangMasuk::where('id', $id)->update($validated);
         Barang::where('id', $id_barang)->update(['stok' => $total_stok]);
 
-        return redirect()->route('barang_masuk');
+        $notification = array(
+            'message' => "Data Barang Masuk berhasil diperbaharui!",
+            'alert-type' => 'success'
+        );
+
+        $notifications = array(
+            'message' => "Data Barang Masuk gagal diperbaharui!",
+            'alert-type' => 'error'
+        );
+
+        if($request->save == true) {
+            return redirect()->route('barang_masuk')->with($notification);
+        } else {
+            return redirect()->route('barang_masuk.edit')->with($notifications);
+        }
     }
 
     public function destroy(string $id){
         $barang_masuk = BarangMasuk::find($id);
         $barang_masuk->delete();
 
-        return redirect()->route('barang_masuk');
+        $notification = array(
+            'message' => "Data Barang Masuk berhasil dihapus!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('barang_masuk')->with($notification);
     }
 
     public function search(Request $request){
