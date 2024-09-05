@@ -15,6 +15,7 @@ class BarangMasuk extends Model
     {
         return $this->belongsTo(Barang::class, 'id_barang');
     } 
+
     protected $fillable = [
         'tgl_masuk',
         'id_barang',
