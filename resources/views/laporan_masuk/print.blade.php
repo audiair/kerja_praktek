@@ -4,12 +4,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH">
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        /* Tambahkan gaya khusus untuk tampilan tabel */
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            border: 1px solid black;
+        }
+
+        td {
+            word-wrap: break-word;
+            border: 1px solid black;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <h1 class="text-center">JAYA ABADI PS (PETSHOP)</h1>
-<h2 class="text-center">Laporan Data Barang Keluar Pertanggal</h2>
+<h2 class="text-center">Laporan Data Barang Keluar</h2>
     <br/>
     <table id="table-data" class="table table-bordered">
         <thead>

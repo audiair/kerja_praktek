@@ -36,7 +36,7 @@
                         <th>AKSI</th>
                     </tr>
                 </x-slot>
-                @php $num=1; @endphp
+                @php $num=1; @endphp 
                 @foreach($barang_masuks as $barang_masuk)
                 <tr>
                     <td>{{ $num++ }}</td>

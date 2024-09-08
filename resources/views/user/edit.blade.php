@@ -48,20 +48,6 @@
                 <x-input-error class="mt-2" :messages="$errors->get('roles')" />
             </div>
 
-            <!-- <div class="max-w-xl">
-                <x-input-label for="role_name" value="ROLE" />
-                <x-select-input id="role_name" name="role_name" class="mt-1 block w-full" required>
-                    <option value="">Open this select menu</option>
-                    @foreach ($roles as $key => $value)
-                    @if (old('name') == $key)
-                        <option value="{{ $key }}" selected>{{ $value }}</option>
-                    @else
-                        <option value="{{ $key }}">{{ $value }}</option>
-                    @endif
-                    @endforeach
-                </x-select-input>
-            </div> -->
-
             <x-secondary-button tag="a" href="{{ route('user') }}">Cancel</x-secondary-button>
             <x-primary-button name="save" value="true">Ubah</x-primary-button>
         </form>
