@@ -45,10 +45,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // protected function type(): Attribute
+    // protected function user_type(): Attribute
     // {
     //     return new Attribute(
-    //         get: fn ($value) => ["owner", "superAdmin", "admin"][$value],
+    //         get: fn ($value) => ["owner", "admin"][$value],
     //     );
     // }
 }

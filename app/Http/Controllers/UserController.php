@@ -121,11 +121,18 @@ class UserController extends Controller
         $search = $request->search;
 
         $users = User::where(function($query) use ($search){
-
+            
             $query->where('name', 'like', "%$search%")
             ->orWhere('email', 'like', "%$search%");
         })->get();
 
-        return view('user.index', compact('users','search'));
-    }
+        
+        $rolenames = Role::where(function($query) use ($search){
+            
+            $query->where('name', 'like', "%$search%");
+        })->get();
+
+        return view('user.index', compact('users','rolenames','search'));
+    }   
 }
+ 
