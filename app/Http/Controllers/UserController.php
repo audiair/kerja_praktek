@@ -120,19 +120,28 @@ class UserController extends Controller
 
         $search = $request->search;
 
-        $users = User::where(function($query) use ($search){
+        // $users = User::where(function($query) use ($search){
             
-            $query->where('name', 'like', "%$search%")
-            ->orWhere('email', 'like', "%$search%");
-        })->get();
+        //     $query->where('name', 'like', "%$search%")
+        //     ->orWhere('email', 'like', "%$search%");
+        // })->get();
 
         
-        $rolenames = Role::where(function($query) use ($search){
-            
-            $query->where('name', 'like', "%$search%");
-        })->get();
+        // $roles = ['owner', 'admin'];
+        // $roles = Role::whereIn('name', $roles)->get();
 
-        return view('user.index', compact('users','rolenames','search'));
+        $users = User::where(function ($query) use ($search) {
+            $query->where('name', 'like', "%$search%")
+                  ->orWhere('email', 'like', "%$search%")
+                  ->orWhereHas('roles', function ($query) use ($search) {
+                      $query->where('name', 'like', "%$search%");
+                  });
+        })->get();
+    
+        // Menampilkan semua role yang ada
+        $roles = Role::all();
+
+        return view('user.index', compact('users','roles','search'));
     }   
 }
  
