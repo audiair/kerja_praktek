@@ -32,7 +32,7 @@
                     <th>NAMA BARANG</th>
                     <th>KATEGORI BARANG</th>
                     <th>STOK</th>
-                    <th>SATUAN</th>
+                    <th>SATUAN BERAT</th>
                     <th>HARGA SATUAN</th>
                     <th>AKSI</th>
                 </tr>

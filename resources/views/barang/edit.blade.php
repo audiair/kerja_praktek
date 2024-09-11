@@ -47,13 +47,15 @@
             </div>
                             
             <div class="max-w-xl">
-                <x-input-label for="" value="SATUAN"/>
+                <x-input-label for="" value="SATUAN BERAT"/>
                 <x-select-input id="satuan" name="satuan" class="mt-1 block w-full" required>
                     <option value="{{ old('satuan', $barangs->satuan) }}" selected> {{ $barangs->satuan }}</option>
                     <option value="Pcs">Pcs</option>
                     <option value="Kilogram">Kilogram</option>
                     <option value="Pack">Pack</option>
                     <option value="Gram">Gram</option>  
+                    <option value="Karung">Karung</option>
+                    <option value="Liter">Liter</option>
                 </x-select-input>
             </div>
 
