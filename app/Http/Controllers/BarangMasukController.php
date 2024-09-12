@@ -14,7 +14,7 @@ class BarangMasukController extends Controller
     }
 
     public function create(){
-        $data['barangs'] = Barang::select('id', 'nama_barang', 'stok')->get();
+        $data['barangs'] = Barang::select('id', 'nama_barang', 'stok', 'harga_satuan')->get();
         return view('barang_masuk.create', $data);
     }
 

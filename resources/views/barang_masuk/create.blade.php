@@ -23,9 +23,9 @@
                     <option value="">Open this select menu</option>
                     @foreach ($barangs as $barang)
                     @if (old('id_barang') == $barang->id)
-                        <option value="{{ $barang->id }}" data-stok="{{ $barang->stok }}" selected>{{ $barang->nama_barang }}</option>
+                        <option value="{{ $barang->id }}" data-stok="{{ $barang->stok }}" selected>{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
                     @else
-                        <option value="{{ $barang->id }}" data-stok="{{ $barang->stok }}">{{ $barang->nama_barang }}</option>
+                        <option value="{{ $barang->id }}" data-stok="{{ $barang->stok }}">{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
                     @endif
                     @endforeach
                 </x-select-input>
@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const inputJmlMasuk = document.getElementById('jml_masuk');
     const inputStok = document.getElementById('stok');
     const inputTotalStok = document.getElementById('total_stok');
+    const inputTotalHarga = document.getElementById('total_harga');
 
     function updateStok() {
         const selectedOption = selectBarang.options[selectBarang.selectedIndex];
