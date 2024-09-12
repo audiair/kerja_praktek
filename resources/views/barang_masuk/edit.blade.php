@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const jumlahMasuk = parseFloat(inputJmlMasuk.value) || 0;
 
         const totalHarga = hargaSatuan * jumlahMasuk;
-        inputTotalHarga.value = totalHarga.toFixed(2);
+        inputTotalHarga.value = totalHarga;
     }
 
     // Event listeners

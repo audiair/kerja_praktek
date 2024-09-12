@@ -40,10 +40,11 @@
             
             <div class="max-w-xl">
                 <x-input-label for="total_harga" value="TOTAL HARGA" />
-                <x-text-input id="total_harga" type="number" name="total_harga" class="mt-1 block w-full bg-gray-200" readonly
-                value="{{ old('total_harga') }}" required /> 
+                <x-text-input id="total_harga" type="number" name="total_harga" class="mt-1 block w-full bg-gray-200"
+                value="{{ old('total_harga') }}" required readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('total_harga')" />
             </div>
+
 
             <div class="max-w-xl">
                 <x-input-label for="keterangan" value="KETERANGAN"/>
@@ -99,14 +100,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function updateTotalHarga(){
         const selectedOption = selectBarang.options[selectBarang.selectedIndex];
         const hargaSatuan = selectedOption ? parseFloat(selectedOption.getAttribute('data-harga')) : 0;
-        const jumlahMasuk = parseFloat(inputJmlMasuk.value) || 0;
+        const jumlahKeluar = parseFloat(inputJmlKeluar.value) || 0;
 
-        const totalHarga = hargaSatuan * jumlahMasuk;
+        const totalHarga = hargaSatuan * jumlahKeluar;
         inputTotalHarga.value = totalHarga;
     }
 
     selectBarang.addEventListener('change', updateTotalHarga);
-    inputJmlMasuk.addEventListener('input', updateTotalHarga);
+    inputJmlKeluar.addEventListener('input', updateTotalHarga);
 
     updateTotalHarga();
 });

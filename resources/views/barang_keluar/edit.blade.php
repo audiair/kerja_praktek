@@ -24,9 +24,9 @@
                     <option value="">Open this select menu</option>
                     @foreach ($barangs as $barang)
                     @if (old('id_barang',  $barang_keluars->id_barang) == $barang->id)
-                        <option value="{{ $barang->id }}" data-stok="{{ $barang->stok }}" selected>{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
+                        <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_satuan }}" data-stok="{{ $barang->stok }}" selected>{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
                     @else
-                        <option value="{{ $barang->id }}" data-stok="{{ $barang->stok }}">{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
+                        <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_satuan }}" data-stok="{{ $barang->stok }}">{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
                     @endif
                     @endforeach
                 </x-select-input>
@@ -43,8 +43,7 @@
 
             <div class="max-w-xl">
                 <x-input-label for="total_harga" value="TOTAL HARGA" />
-                <x-text-input id="total_harga" type="number" name="total_harga" class="mt-1 block w-full"
-                value="{{ old('total_harga', $barang_keluars->total_harga) }}" required />
+                <x-text-input id="total_harga" type="number" name="total_harga" class="mt-1 block w-full bg-gray-200" readonly/>
                 <x-input-error class="mt-2" :messages="$errors->get('total_harga')" />
             </div>
 
@@ -85,6 +84,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const inputJmlKeluar_lama = document.getElementById('jml_keluar_lama');
     const inputStok = document.getElementById('stok');
     const inputTotalStok = document.getElementById('total_stok');
+    const inputTotalHarga = document.getElementById('total_harga');
 
     function updateStok() {
         const selectedOption = selectBarang.options[selectBarang.selectedIndex];
@@ -99,10 +99,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
         inputTotalStok.value = updatedStok - jmlKeluar;  
     }
 
-    selectBarang.addEventListener('change', updateStok);
-    inputJmlKeluar.addEventListener('input', updateStok);
+    // selectBarang.addEventListener('change', updateStok);
+    // inputJmlKeluar.addEventListener('input', updateStok);
 
+    // updateStok();
+
+    function updateTotalHarga() {
+        const selectedOption = selectBarang.options[selectBarang.selectedIndex];
+        const hargaSatuan = selectedOption ? parseFloat(selectedOption.getAttribute('data-harga')) : 0;
+        const jumlahKeluar = parseFloat(inputJmlKeluar.value) || 0;
+
+        const totalHarga = hargaSatuan * jumlahKeluar;
+        inputTotalHarga.value = totalHarga;
+    }
+
+    // Event listeners
+    selectBarang.addEventListener('change', () => {
+        updateStok();
+        updateTotalHarga();
+    });
+
+    inputJmlKeluar.addEventListener('input', () => {
+        updateStok();
+        updateTotalHarga();
+    });
+
+    // Initial update
     updateStok();
+    updateTotalHarga();
 
 });
 </script>
