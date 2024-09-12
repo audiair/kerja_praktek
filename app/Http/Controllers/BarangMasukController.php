@@ -50,7 +50,7 @@ class BarangMasukController extends Controller
 
     public function edit(string $id){
         $data['barang_masuks'] = BarangMasuk::find($id);
-        $data['barangs'] = Barang::select('id', 'nama_barang', 'stok')->get();
+        $data['barangs'] = Barang::select('id', 'nama_barang', 'stok', 'harga_satuan')->get();
         
         return view('barang_masuk.edit', $data);
     }
