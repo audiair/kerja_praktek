@@ -23,9 +23,9 @@
                     <option value="">Open this select menu</option>
                     @foreach ($barangs as $barang)
                     @if (old('id_barang') == $barang->id) 
-                        <option value="{{ $barang->id }}" data-stok="{{ $barang->stok }}" selected>{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
+                        <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_satuan }}" data-stok="{{ $barang->stok }}" selected>{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
                     @else
-                        <option value="{{ $barang->id }}" data-stok="{{ $barang->stok }}">{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
+                        <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_satuan }}" data-stok="{{ $barang->stok }}">{{ $barang->nama_barang }} - Rp. {{number_format ($barang->harga_satuan) }}</option>
                     @endif
                     @endforeach
                 </x-select-input>
@@ -40,7 +40,7 @@
             
             <div class="max-w-xl">
                 <x-input-label for="total_harga" value="TOTAL HARGA" />
-                <x-text-input id="total_harga" type="number" name="total_harga" class="mt-1 block w-full"
+                <x-text-input id="total_harga" type="number" name="total_harga" class="mt-1 block w-full bg-gray-200" readonly
                 value="{{ old('total_harga') }}" required /> 
                 <x-input-error class="mt-2" :messages="$errors->get('total_harga')" />
             </div>
@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const inputJmlKeluar = document.getElementById('jml_keluar');
     const inputStok = document.getElementById('stok');
     const inputTotalStok = document.getElementById('total_stok');
+    const inputTotalHarga = document.getElementById('total_harga');
 
     function updateStok() {
         const selectedOption = selectBarang.options[selectBarang.selectedIndex];
@@ -94,5 +95,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
     inputJmlKeluar.addEventListener('input', updateStok);
 
     updateStok();
+
+    function updateTotalHarga(){
+        const selectedOption = selectBarang.options[selectBarang.selectedIndex];
+        const hargaSatuan = selectedOption ? parseFloat(selectedOption.getAttribute('data-harga')) : 0;
+        const jumlahMasuk = parseFloat(inputJmlMasuk.value) || 0;
+
+        const totalHarga = hargaSatuan * jumlahMasuk;
+        inputTotalHarga.value = totalHarga;
+    }
+
+    selectBarang.addEventListener('change', updateTotalHarga);
+    inputJmlMasuk.addEventListener('input', updateTotalHarga);
+
+    updateTotalHarga();
 });
 </script>
