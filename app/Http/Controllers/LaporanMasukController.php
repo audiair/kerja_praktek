@@ -19,7 +19,7 @@ class LaporanMasukController extends Controller
         $barang_masuk = BarangMasuk::all();
 
         $pdf = PDF::loadview('laporan_masuk.print', ['barang_masuks' => $barang_masuk]);
-        return $pdf->download('laporan_masuk.pdf');
+        return $pdf->download('laporan_brgmasuk.pdf');
     }
 
     public function filter($tgl_awal, $tgl_akhir){
@@ -27,10 +27,10 @@ class LaporanMasukController extends Controller
 
         $barang_masuk = BarangMasuk::with('barang')->whereBetween('tgl_masuk',[$tgl_awal,$tgl_akhir])->get();
         $pdf = PDF::loadview('laporan_masuk.cetak_filter', ['barang_masuks' => $barang_masuk]);
-        return $pdf->download('laporan_masuk_pertanggal.pdf');
+        return $pdf->download('laporan_brgmasuk_pertanggal.pdf');
     }
 
     public function export(){
-        return Excel::download(new LaporanMasukExport, 'laporan_masuk.xlsx');
+        return Excel::download(new LaporanMasukExport, 'laporan_brgmasuk.xlsx');
     }
 }

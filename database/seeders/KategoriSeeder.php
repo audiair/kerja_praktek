@@ -20,24 +20,6 @@ class KategoriSeeder extends Seeder
                     'kategori_barang'=>'Pakan Hewan',
                     'created_at' => now(),
                     'updated_at' => now(),
-                ],
-                [
-                    'kode_kategori' => 'KTG02',
-                    'kategori_barang'=>'Aksesoris Hewan',
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'kode_kategori' => 'KTG03',
-                    'kategori_barang'=>'Perlengkapan Hewan',
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'kode_kategori' => 'KTG04',
-                    'kategori_barang' => 'Mainan Hewan',
-                    'created_at' => now(),
-                    'updated_at' => now(),
                 ]
             ]
         );

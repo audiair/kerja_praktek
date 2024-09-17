@@ -17,13 +17,13 @@ class BarangSeeder extends Seeder
             [
                 [
                     'kode_barang' => 'BPS001',
-                    'nama_barang'=>'Harnes',
+                    'nama_barang'=>'Pakan Ayam',
                     'stok' => '0',
                     'satuan' => 'Pcs',
                     'harga_satuan' => '20000',
                     'created_at' => now(),
                     'updated_at' => now(),
-                    'id_kategori'=> '2',
+                    'id_kategori'=> '1',
                 ],
             ]
         );
