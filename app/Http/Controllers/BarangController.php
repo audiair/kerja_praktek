@@ -28,6 +28,18 @@ class BarangController extends Controller
             'harga_satuan' => 'required',
         ]);
 
+        // Cek apakah nama_barang sudah ada di database
+        $existingBarang = Barang::where('nama_barang', $request->nama_barang)->first();
+
+         // Jika nama barang sudah ada, kembalikan pesan error
+        if ($existingBarang) {
+            $notification = array(
+                'message' => "Nama Barang sudah ada! Silakan gunakan nama yang berbeda.",
+                'alert-type' => 'error'
+            );
+            return redirect()->route('barang.create')->with($notification)->withInput();
+        }
+
         Barang::create($validated);
 
         $notification = array(

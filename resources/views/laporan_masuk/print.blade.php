@@ -38,7 +38,7 @@
 </head>
 <body>
 <h1 class="text-center">JAYA ABADI PS (PETSHOP)</h1>
-<h2 class="text-center">Laporan Data Barang Keluar</h2>
+<h2 class="text-center">Laporan Data Barang Masuk</h2>
     <br/>
     <table id="table-data" class="table table-bordered">
         <thead>
@@ -68,5 +68,8 @@
 
         </tbody>
     </table>
+    <!-- Tampilkan tanggal dan nama user yang mencetak -->
+    <p><strong>Dicetak oleh:</strong> {{ $user }}</p>
+    <p><strong>Tanggal Cetak:</strong> {{ $printDate }}</p>
 </body>
 </html>

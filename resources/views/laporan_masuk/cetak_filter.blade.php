@@ -64,8 +64,10 @@
         <!-- <script type="text/javascript">
             window.print();
         </script> -->
-        
         </tbody>
     </table>
+     <!-- Tampilkan tanggal dan nama user yang mencetak -->
+    <p><strong>Dicetak oleh:</strong> {{ $user }}</p>
+    <p><strong>Tanggal Cetak:</strong> {{ $printDate }}</p>
 </body>
 </html>

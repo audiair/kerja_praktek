@@ -23,6 +23,18 @@ class KategoriBarangController extends Controller
             'kategori_barang' => 'required|max:150',
         ]);
 
+         // Cek apakah nama_barang sudah ada di database
+         $existingKategoriBarang = Kategori::where('kategori_barang', $request->kategori_barang)->first();
+
+         // Jika nama barang sudah ada, kembalikan pesan error
+        if ($existingKategoriBarang) {
+            $notification = array(
+                'message' => "Kategori Barang sudah ada! Silakan gunakan nama yang berbeda.",
+                'alert-type' => 'error'
+            );
+            return redirect()->route('kategori.create')->with($notification)->withInput();
+        }
+
         Kategori::create($validated);
 
         $notification = array(
